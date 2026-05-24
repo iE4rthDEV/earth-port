@@ -131,13 +131,20 @@
     -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, black 10%);
     mask-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, black 10%);
   }
+
+  html::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* สำหรับ Firefox */
+  html {
+    scrollbar-width: none;
+  }
 }
 
-html::-webkit-scrollbar {
-  display: none;
-}
-
-/* สำหรับ Firefox */
-html {
-  scrollbar-width: none;
+@media (width < 40rem) {
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
