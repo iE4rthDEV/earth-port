@@ -1,46 +1,98 @@
-@import url("https://fonts.googleapis.com/css2?family=Outfit&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @plugin "daisyui" {
-  themes: light --default;
+  themes: earthport --default;
 }
-@layer utilities {
-  .outfit-font {
-    font-family: "Outfit", sans-serif;
+
+@layer base {
+  :root {
+    --color-base-100: #ffffff;
+    --color-base-200: #eff6ff;
+    --color-base-300: #dbeafe;
+    --color-primary: 37 99 235;
+    --color-primary-end: 2 132 199;
+    --color-secondary: 2 132 199;
+    --color-accent: 2 132 199;
+    --color-neutral: 28 25 23;
+    --color-surface: 255 255 255;
+    --color-surface-muted: 239 246 255;
+    --color-text: 28 25 23;
+    --color-text-muted: 107 114 128;
+    --background: rgb(var(--color-surface));
+    --foreground: rgb(var(--color-text));
+  }
+
+  body {
+    @apply bg-surface text-stone-900 antialiased;
+  }
+}
+
+@layer components {
+  .bg-brand-gradient {
+    background: linear-gradient(
+      to right,
+      rgb(var(--color-primary)),
+      rgb(var(--color-primary-end))
+    );
   }
 
   .text-gradient {
-    @apply bg-gradient-to-r from-blue-600 to-sky-600 text-transparent bg-clip-text;
+    background: linear-gradient(
+      to right,
+      rgb(var(--color-primary)),
+      rgb(var(--color-primary-end))
+    );
+    @apply bg-clip-text text-transparent;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-none px-6 py-2.5 text-sm font-semibold text-white transition duration-300 ease-in-out bg-brand-gradient hover:scale-105 hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-stone-300 bg-white px-6 py-2.5 text-sm font-semibold text-stone-800 transition duration-300 ease-in-out hover:border-primary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-white transition duration-300 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-transparent;
+  }
+
+  .link-accent {
+    @apply text-primary transition duration-300 ease-in-out hover:font-medium hover:text-primary-end;
+  }
+
+  .card-surface {
+    @apply rounded-2xl border border-stone-200 bg-base-100 shadow-sm transition duration-300 hover:border-primary/40 hover:shadow-md;
+  }
+
+  .section-muted {
+    @apply bg-surface-muted;
   }
 
   .tech-stack {
-    @apply outfit-font text-sm sm:text-base cursor-pointer;
+    @apply font-Outfit text-sm sm:text-base cursor-pointer;
   }
 
   .tech-stack-2 {
-    @apply flex flex-wrap items-center gap-1 sm:gap-2 outfit-font text-sm cursor-pointer;
-  }
-  .description {
-    @apply text-sm sm:text-base font-Kanit font-light;
+    @apply flex flex-wrap items-center gap-1 sm:gap-2 font-Outfit text-sm cursor-pointer;
   }
 
-  /* Hide scrollbar for Chrome, Safari and Opera */
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
+  .description {
+    @apply text-sm sm:text-base font-Kanit font-light text-stone-600;
   }
-  /* Hide scrollbar for IE, Edge and Firefox */
-  .no-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
+}
+
+@layer utilities {
   .hover-drop-shadow {
     @apply hover:drop-shadow-[0px_0px_5px_rgba(255,255,255,0.75)];
   }
+
   .animated-underline {
     position: relative;
   }
+
   .animated-underline::before,
   .animated-underline::after {
     content: "";
@@ -50,16 +102,20 @@
     border-top-width: 2px;
     border-top-color: #ffffff;
   }
+
   .animated-underline::before {
     border-top-style: none;
     width: 100%;
   }
+
   .animated-underline::after {
     border-top-style: solid;
     width: 0;
     transition: width 0.5s ease-in;
   }
-  .animated-underline:hover::after {
+
+  .animated-underline:hover::after,
+  .animated-underline-active::after {
     width: 100%;
   }
 
@@ -75,4 +131,13 @@
     -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, black 10%);
     mask-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, black 10%);
   }
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+/* สำหรับ Firefox */
+html {
+  scrollbar-width: none;
 }

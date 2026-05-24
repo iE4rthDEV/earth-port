@@ -1,0 +1,198 @@
+[
+  {
+    "project_id": "1",
+    "slug": "addkaithai-crs",
+    "project_name": "Family Store Cashier & Reservation System",
+    "project_image": "/img/addkaithai-crs.png",
+    "project_description": "ระบบแคชเชียร์และบันทึกการจองสินค้าสำหรับร้านค้าครอบครัว ระบบนี้ถูกพัฒนาขึ้นเพื่อช่วยบริหารจัดการร้านค้าครอบครัวให้สะดวก รวดเร็ว และมีประสิทธิภาพยิ่งขึ้น",
+    "summary": "โปรเจคนี้เป็นส่วนตัว ที่คิดขึ้นมาเพื่อใช้ในร้านค้าของครอบครัว ช่วยในการบริหารจัดการร้านค้าให้สะดวก รวดเร็ว และมีประสิทธิภาพยิ่งขึ้น โดยจะมีฟังก์ชันหลักๆ คือ ระบบคิดเงินและคำนวณเงินทอน, ระบบการโอนผ่านพร้อมเพย์, ระบบบันทึกการจองสินค้าในช่วงเทศกาล",
+    "project_tag": ["Next.js", "Tailwind CSS", "Mantine", "MongoDB"],
+    "project_responsibilities": ["Project Owner"],
+    "keyResponsibilities": [
+      "ออกแบบเว็บไซต์ตามดีไซน์จาก Figma",
+      "สร้างฐานข้อมูลเพื่อจัดเก็บข้อมูลของลูกค้า",
+      "ออกแบบและพัฒนาอินเทอร์เฟซผู้ใช้งานให้รองรับทุกอุปกรณ์ด้วย Next.js และ Tailwind CSS",
+      "ออกแบบอินเทอร์เฟซให้สะอาดตา ใช้งานง่าย เป็นมิตรกับผู้ใช้",
+      "ออกแบบระบบชำระเงิน Promptpay QR Code"
+    ],
+    "technologies_used": [
+      "Next.js, TypeScript, Tailwind CSS, Mantine, Promptpay-qr",
+      "MongoDB"
+    ],
+    "github_url": "https://github.com/entsrkk/addkaithai-crs",
+    "live_url": "https://addkaithai-crs.vercel.app/",
+    "featured": true
+  },
+  {
+    "project_id": "2",
+    "slug": "chaz-insurance",
+    "project_name": "Main Website of CHAZ Insurance",
+    "project_image": "/img/chazinsurance.png",
+    "project_description": "เว็บไซต์หลักของบริษัทประกันภัย CHAZ Insurance Brokers Ltd",
+    "summary": "เว็บไซต์หลักของบริษัทประกันภัย CHAZ Insurance Brokers Ltd ย้ายจาก Joomla เป็น WordPress",
+    "project_tag": ["WordPress"],
+    "project_responsibilities": ["WordPress Developer"],
+    "keyResponsibilities": [
+      "ย้ายระบบจาก Joomla เป็น WordPress",
+      "ออกแบบและพัฒนาอินเทอร์เฟซผู้ใช้งานให้รองรับทุกอุปกรณ์ด้วย WordPress",
+      "ออกแบบอินเทอร์เฟซให้สะอาดตาและเป็นมิตรกับผู้ใช้",
+      "ติดตั้งระบบสลับภาษาเพื่อรองรับการใช้งานหลายภาษา",
+      "ติดตั้งระบบกรอกแบบฟอร์มออนไลน์ของลูกค้าเพื่อติดต่อกลับ และส่ง email",
+      "ติดตั้งระบบกรอกแบบฟอร์มออนไลน์สำหรับสมัครงานกับบริษัท และส่ง email",
+      "ดูแลรักษาระบบและแก้ไขข้อผิดพลาดที่เกิดขึ้น"
+    ],
+    "technologies_used": ["WordPress"],
+    "github_url": null,
+    "live_url": "https://chazinsurance.com/",
+    "featured": true
+  },
+  {
+    "project_id": "3",
+    "slug": "tech-vibe",
+    "project_name": "TechVibe: An Academic Weblog Platform",
+    "project_image": "/img/TechVibe.png",
+    "project_description": "แพลตฟอร์มเว็บไซต์วิชาการออนไลน์แบบครบวงจร เพื่ออำนวยความสะดวกในการแบ่งปันบทความวิชาการ งานวิจัย และการแลกเปลี่ยนความคิดเห็นเชิงวิชาการระหว่างนักศึกษา อาจารย์ และผู้ใช้งานทั่วไป โดยระบบประกอบด้วย การยืนยันตัวตนของผู้ใช้, การจัดการบทความ, การจัดการเรื่องร้องเรียน, การจัดการผู้ใช้งาน, และ การตั้งค่าระบบ",
+    "summary": "โปรเจคนี้เป็นโปรเจคจบ ที่พัฒนาโดยทีม 3 คน สำหรับการเขียนบทความออนไลน์ รองรับผู้ใช้กว่า 100 คนในภาควิชาวิศวกรรมซอฟต์แวร์",
+    "project_tag": ["Next.js", "Tailwind CSS", "Supabase"],
+    "project_responsibilities": ["Frontend Developer (Team Project)"],
+    "keyResponsibilities": [
+      "ออกแบบและพัฒนาอินเทอร์เฟซผู้ใช้งานให้รองรับทุกอุปกรณ์ (Responsive) ด้วย Next.js และ TypeScript",
+      "สร้างคอมโพเนนต์ที่เหมาะสมกับทั้ง SSR, CSR และ SSG เพื่อประสิทธิภาพด้าน SEO",
+      "ใช้ Mantine React Library ในการสร้าง UI ที่ทันสมัยและมีความสม่ำเสมอ",
+      "ออกแบบและตกแต่งอินเทอร์เฟซด้วย Tailwind CSS เพื่อให้ได้ดีไซน์ที่ทันสมัยและน่าสนใจ",
+      "ออกแบบอินเทอร์เฟซให้สะอาดตา ใช้งานง่าย เป็นมิตรกับผู้ใช้"
+    ],
+    "technologies_used": [
+      "Next.js, TypeScript, Tailwind CSS, Zustand, Mantine, TinyMCE",
+      "Supabase, PostgreSQL",
+      "Git, GitHub, Git Flow"
+    ],
+    "github_url": "https://github.com/msssrp/tech-vibe",
+    "live_url": null,
+    "featured": true
+  },
+  {
+    "project_id": "4",
+    "slug": "blockchain-pokemon",
+    "project_name": "Blockchain for Buying Pokémon",
+    "project_image": "/img/blockchain-beige.png",
+    "project_description": "เป็นโปรเจคในรายวิชา Blockchain จะการผสมผสาน 2 งานเข้าด้วยกัน คือ โปรเจคการเรียนรู้ API ของ Pokémon API และการใช้ Blockchain ในการซื้อขาย โดยใช้ Next.js และ TailwindCSS",
+    "summary": "โปรเจคนี้เป็นโปรเจคในรายวิชา Blockchain จะการผสมผสาน 2 งานเข้าด้วยกัน คือ โปรเจคการเรียนรู้ API ของ Pokémon API และการใช้ Blockchain ในการซื้อขาย",
+    "project_tag": ["Next.js", "Tailwind CSS", "Web3"],
+    "project_responsibilities": ["Project Owner"],
+    "keyResponsibilities": [
+      "ใช้เรียนรู้ Web3 และการเชื่อมต่อกับ Blockchain",
+      "เรียนรู้การใช้งาน API"
+    ],
+    "technologies_used": [
+      "Next.js, TypeScript, Tailwind CSS, Web3",
+      "Metamask"
+    ],
+    "github_url": "https://github.com/entsrkk/blockchain",
+    "live_url": "https://blockchain-beige.vercel.app/",
+    "featured": true
+  },
+  {
+    "project_id": "5",
+    "slug": "ticket-protect",
+    "project_name": "Ticket Protect",
+    "project_image": "/img/ticketprotect-eventtech-ai.png",
+    "project_description": "พัฒนาเว็บไซต์ให้บริการประกันตั๋ว (Ticket Protection) ช่วยให้ผู้ซื้อตั๋วได้รับความคุ้มครองในกรณีที่ไม่สามารถเข้าร่วมงานได้ตามเงื่อนไขที่กำหนด",
+    "summary": "พัฒนาเว็บไซต์ให้บริการประกันตั๋ว (Ticket Protection) ช่วยให้ผู้ซื้อตั๋วได้รับความคุ้มครองในกรณีที่ไม่สามารถเข้าร่วมงานได้ตามเงื่อนไขที่กำหนด",
+    "project_tag": ["WordPress"],
+    "project_responsibilities": ["WordPress Developer Intern"],
+    "keyResponsibilities": [
+      "ออกแบบและพัฒนาอินเทอร์เฟซผู้ใช้งานให้รองรับทุกอุปกรณ์ด้วย WordPress",
+      "ออกแบบเว็บไซต์ตามดีไซน์จาก Figma",
+      "ออกแบบอินเทอร์เฟซให้สะอาดตาและเป็นมิตรกับผู้ใช้",
+      "ติดตั้งระบบสลับภาษาเพื่อรองรับการใช้งานหลายภาษา"
+    ],
+    "technologies_used": ["WordPress"],
+    "github_url": null,
+    "live_url": "https://ticketprotect.eventtech.ai/",
+    "featured": true
+  },
+  {
+    "project_id": "6",
+    "slug": "shop-eventtech",
+    "project_name": "Shop EventTech",
+    "project_image": "/img/shop-eventtech-homepage.png",
+    "project_description": "พัฒนาและปรับปรุงเว็บไซต์ร้านค้าออนไลน์ของ EventTech ให้ผู้ใช้สามารถซื้อสินค้าและบริการที่เกี่ยวข้องกับอีเวนต์ได้สะดวกและปลอดภัย",
+    "summary": "พัฒนาและปรับปรุงเว็บไซต์ร้านค้าออนไลน์ของ EventTech ให้ผู้ใช้สามารถซื้อสินค้าและบริการที่เกี่ยวข้องกับอีเวนต์ได้สะดวกและปลอดภัย",
+    "project_tag": ["WordPress"],
+    "project_responsibilities": ["WordPress Developer Intern"],
+    "keyResponsibilities": [
+      "ออกแบบและพัฒนาอินเทอร์เฟซผู้ใช้งานให้รองรับทุกอุปกรณ์ด้วย WordPress",
+      "ออกแบบอินเทอร์เฟซให้สะอาดตาและเป็นมิตรกับผู้ใช้",
+      "ติดตั้งระบบสลับภาษาเพื่อรองรับการใช้งานหลายภาษา"
+    ],
+    "technologies_used": ["WordPress"],
+    "github_url": null,
+    "live_url": "https://shop.eventtech.ai/",
+    "featured": true
+  },
+  {
+    "project_id": "7",
+    "slug": "shopping-cart-redux",
+    "project_name": "Shopping Cart with Redux",
+    "project_image": "/img/ShoppingCartRedux.png",
+    "project_description": "โปรเจคนี้เป็น Workshop ในรายวิชา Component-based & Mobile Development เป็นการเรียนรู้การใช้ Redux ในการจัดการ State ของโปรเจค สามารถเพิ่มสินค้า เพิ่มสินค้าลงในตะกร้า และลบสินค้าออกจากตะกร้าได้ และยังได้เรียนรู้การใช้ Redux DevTools ในการ Debug อีกด้วย",
+    "summary": "โปรเจคนี้เป็น Workshop ในรายวิชา Component-based & Mobile Development เป็นการเรียนรู้การใช้ Redux ในการจัดการ State ของโปรเจค สามารถเพิ่มสินค้า เพิ่มสินค้าลงในตะกร้า และลบสินค้าออกจากตะกร้าได้",
+    "project_tag": ["React", "Vite", "Tailwind CSS", "Redux", "React Hook Form"],
+    "project_responsibilities": ["Project Owner"],
+    "keyResponsibilities": [
+      "เรียนรู้การใช้ Redux ในการจัดการ State",
+      "ใช้ Redux DevTools ในการ Debug",
+      "ใช้ React Hook Form ในการจัดการฟอร์ม"
+    ],
+    "technologies_used": [
+      "Vite, React, Tailwind CSS, Redux, React Hook Form"
+    ],
+    "github_url": "https://github.com/entsrkk/ShoppingCartRedux.git",
+    "live_url": null,
+    "featured": false
+  },
+  {
+    "project_id": "8",
+    "slug": "mern-chat",
+    "project_name": "Chat Application with MERN Stack",
+    "project_image": "/img/mern-chat.png",
+    "project_description": "โปรเจคนี้เป็น Workshop ในรายวิชา Component-based & Mobile Development เป็นการเรียนรู้พื้นฐาน MERN Stack และพื้นฐานการใช้งาน WebSocket, lodash โปรเจคนี้เปรียบเสมือนการส่งข้อความแบบ Realtime ระหว่างผู้ใช้บน Chat Application จริงๆ",
+    "summary": "โปรเจคนี้เป็น Workshop ในรายวิชา Component-based & Mobile Development เป็นการเรียนรู้พื้นฐาน MERN Stack และพื้นฐานการใช้งาน WebSocket, lodash",
+    "project_tag": ["React", "Vite", "Tailwind CSS", "Lodash", "Axios", "MongoDB"],
+    "project_responsibilities": ["Project Owner"],
+    "keyResponsibilities": [
+      "เรียนรู้พื้นฐาน MERN Stack",
+      "ใช้ WebSocket สำหรับการส่งข้อความแบบ Realtime",
+      "ใช้ Lodash และ Axios ในโปรเจค"
+    ],
+    "technologies_used": [
+      "Vite, TailwindCSS, Axios, Lodash, MongoDB, WebSocket, Bcryptjs, Cookie Parser"
+    ],
+    "github_url": "https://github.com/entsrkk/MERN_Chat.git",
+    "live_url": null,
+    "featured": false
+  },
+  {
+    "project_id": "9",
+    "slug": "mern-e-commerce",
+    "project_name": "E-commerce website with MERN Stack",
+    "project_image": "/img/mern-e-commerce.png",
+    "project_description": "โปรเจคนี้เป็น Workshop ในรายวิชา Component-based & Mobile Development เป็นการเรียนรู้ MERN Stack และการใช้งาน Firebase เป็นโปรเจคที่มีความ Advance มากขึ้น โดยการลงทะเบียนและเข้าสู่ระบบกับ Google ด้วย Firebase, การใช้งาน Swagger เพื่อสร้าง API Document และทดสอบ API ได้ง่ายขึ้น",
+    "summary": "โปรเจคนี้เป็น Workshop ในรายวิชา Component-based & Mobile Development เป็นการเรียนรู้ MERN Stack และการใช้งาน Firebase เป็นโปรเจคที่มีความ Advance มากขึ้น",
+    "project_tag": ["React", "Vite", "Tailwind CSS", "Firebase", "Axios", "MongoDB"],
+    "project_responsibilities": ["Project Owner"],
+    "keyResponsibilities": [
+      "ลงทะเบียนและเข้าสู่ระบบกับ Google ด้วย Firebase",
+      "ใช้ Swagger เพื่อสร้าง API Document",
+      "ใช้ AuthContext ในการตรวจสอบสิทธิ์ของผู้ใช้งาน",
+      "จำกัดสิทธิ์ในการเข้าถึงในหน้า Admin Panel"
+    ],
+    "technologies_used": [
+      "Vite, TailwindCSS, SweetAlert2, TanStack, Axios, Firebase, MongoDB, Swagger"
+    ],
+    "github_url": "https://github.com/entsrkk/MERN_SeShop.git",
+    "live_url": null,
+    "featured": false
+  }
+]
