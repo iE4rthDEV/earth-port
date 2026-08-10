@@ -36,9 +36,9 @@ const Hero: React.FC = () => {
               data-aos-easing="ease-out"
               className="font-Kanit mx-auto max-w-3xl text-base font-light leading-relaxed text-stone-600 md:text-balance md:text-xl lg:mx-0"
             >
-              สวัสดีครับ! ผมชื่อเอิร์ธ หรือ นายนิติ สุระคงคา เป็น Junior Front-end Developer ที่มีความสนใจในการพัฒนา Web Application ด้วยเทคโนโลยีสมัยใหม่
-              มีประสบการณ์ในการพัฒนาเว็บไซต์และออกแบบประสบการณ์ผู้ใช้งานในฝั่ง Front-end พร้อมเรียนรู้และพัฒนาทักษะใหม่ๆ อยู่เสมอ
-              และปัจจุบันกำลังต่อยอดทักษะด้าน Full Stack เพื่อเติบโตสู่การเป็น Full Stack Developer ในอนาคต
+              สวัสดีครับ! ผมชื่อเอิร์ธ หรือ นายนิติ สุระคงคา เป็น Junior Full Stack Developer ที่มีพื้นฐานในการพัฒนา Web Application ด้วยเทคโนโลยีสมัยใหม่
+              มีประสบการณ์ในการพัฒนาเว็บไซต์และออกแบบประสบการณ์ผู้ใช้งานในฝั่ง Front-end และ Back-end ผมมีความมุ่งมั่นที่จะพัฒนาโซลูชันเว็บที่สมบูรณ์แบบ
+              พร้อมทั้งพัฒนาทักษะการเป็นนักพัฒนาซอฟต์แวร์ของตนเองอย่างต่อเนื่อง
             </p>
             <div
               data-aos="fade-up"

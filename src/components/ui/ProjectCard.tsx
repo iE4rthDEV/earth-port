@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { FaStar } from "react-icons/fa";
 import { getProjectPath } from "@/lib/projects";
 import type { Project } from "@/types/project";
 import TechBadge from "./TechBadge";
@@ -26,7 +27,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   if (variant === "list") {
     return (
       <div className="card md:card-side card-surface overflow-hidden hover:bg-base-200/50">
-        <Link href={detailHref} className="shrink-0">
+        <Link href={detailHref} className="relative shrink-0">
           <Image
             src={project.project_image}
             alt={project.project_name}
@@ -35,6 +36,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             loading="lazy"
             className="h-auto sm:w-72 md:w-80 xl:w-[28rem] aspect-[16/9] object-cover object-top border border-stone-100 rounded-t-xl sm:rounded-s-xl sm:rounded-e-none"
           />
+          {project.starred && (
+            <FaStar className="absolute top-2 right-2 h-6 w-6 text-yellow-400 drop-shadow" />
+          )}
         </Link>
         <div className="card-body p-4 md:p-6">
           <Link href={detailHref}>
@@ -71,6 +75,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           className="w-full h-96 object-cover object-top"
           loading="lazy"
         />
+        {project.starred && (
+          <FaStar className="absolute top-3 right-3 h-7 w-7 text-yellow-400 drop-shadow" />
+        )}
       </figure>
       <div className="card-body p-5 lg:py-6">
         <h2 className="card-title font-Outfit text-base sm:text-xl font-medium capitalize line-clamp-1 transition duration-300 hover:text-primary">

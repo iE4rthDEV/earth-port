@@ -21,7 +21,8 @@
     ],
     "github_url": "https://github.com/entsrkk/addkaithai-crs",
     "live_url": "https://addkaithai-crs.vercel.app/",
-    "featured": true
+    "featured": true,
+    "starred": true
   },
   {
     "project_id": "2",
@@ -100,7 +101,7 @@
     "project_description": "พัฒนาเว็บไซต์ให้บริการประกันตั๋ว (Ticket Protection) ช่วยให้ผู้ซื้อตั๋วได้รับความคุ้มครองในกรณีที่ไม่สามารถเข้าร่วมงานได้ตามเงื่อนไขที่กำหนด",
     "summary": "พัฒนาเว็บไซต์ให้บริการประกันตั๋ว (Ticket Protection) ช่วยให้ผู้ซื้อตั๋วได้รับความคุ้มครองในกรณีที่ไม่สามารถเข้าร่วมงานได้ตามเงื่อนไขที่กำหนด",
     "project_tag": ["WordPress"],
-    "project_responsibilities": ["WordPress Developer Intern"],
+    "project_responsibilities": ["Frontend Developer Intern"],
     "keyResponsibilities": [
       "ออกแบบและพัฒนาอินเทอร์เฟซผู้ใช้งานให้รองรับทุกอุปกรณ์ด้วย WordPress",
       "ออกแบบเว็บไซต์ตามดีไซน์จาก Figma",
@@ -120,7 +121,7 @@
     "project_description": "พัฒนาและปรับปรุงเว็บไซต์ร้านค้าออนไลน์ของ EventTech ให้ผู้ใช้สามารถซื้อสินค้าและบริการที่เกี่ยวข้องกับอีเวนต์ได้สะดวกและปลอดภัย",
     "summary": "พัฒนาและปรับปรุงเว็บไซต์ร้านค้าออนไลน์ของ EventTech ให้ผู้ใช้สามารถซื้อสินค้าและบริการที่เกี่ยวข้องกับอีเวนต์ได้สะดวกและปลอดภัย",
     "project_tag": ["WordPress"],
-    "project_responsibilities": ["WordPress Developer Intern"],
+    "project_responsibilities": ["Frontend Developer Intern"],
     "keyResponsibilities": [
       "ออกแบบและพัฒนาอินเทอร์เฟซผู้ใช้งานให้รองรับทุกอุปกรณ์ด้วย WordPress",
       "ออกแบบอินเทอร์เฟซให้สะอาดตาและเป็นมิตรกับผู้ใช้",
