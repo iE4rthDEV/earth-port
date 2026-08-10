@@ -8,7 +8,6 @@ import {
   FaPhone,
   FaGithub,
   FaLinkedin,
-  FaMedium,
 } from "react-icons/fa";
 import { TypeAnimation } from "react-type-animation";
 import PageSection from "@/components/ui/PageSection";
@@ -33,8 +32,8 @@ const contactItems = [
     delay: "1300",
   },
   {
-    href: "https://github.com/entsrkk",
-    label: "entsrkk",
+    href: "https://github.com/iE4rthDEV",
+    label: "iE4rthDEV",
     icon: FaGithub,
     delay: "1500",
   },
@@ -43,12 +42,6 @@ const contactItems = [
     label: "Niti Surakongka",
     icon: FaLinkedin,
     delay: "1700",
-  },
-  {
-    href: "https://medium.com/@niti2003s",
-    label: "@niti2003s",
-    icon: FaMedium,
-    delay: "1900",
   },
 ] as const;
 
@@ -71,7 +64,7 @@ const ContactPage: React.FC = () => {
             ติดต่อผมได้ผ่านช่องทางต่างๆ ด้านล่าง
           </p>
         </div>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="flex flex-wrap justify-center gap-4">
           {contactItems.map(({ href, label, icon: Icon, delay }) => (
             <Link
               key={href}
@@ -80,7 +73,7 @@ const ContactPage: React.FC = () => {
               rel="noopener noreferrer"
               data-aos="fade-up"
               data-aos-delay={delay}
-              className="card-surface group flex flex-col items-center gap-4 p-6 transition-all duration-300 hover:scale-105 hover:border-primary/60 hover:shadow-lg"
+              className="card-surface group flex w-full flex-none flex-col items-center gap-4 p-6 transition-all duration-300 hover:scale-105 hover:border-primary/60 hover:shadow-lg sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.667rem)]"
             >
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 transition-all duration-300 group-hover:bg-primary/20">
                 <Icon className="h-8 w-8 text-primary transition-all duration-300 group-hover:h-9 group-hover:w-9 group-hover:text-primary-end" />

@@ -6,7 +6,6 @@ import {
   FaInstagram,
   FaLine,
   FaLinkedin,
-  FaMedium,
 } from "react-icons/fa";
 
 const socialLinks = [
@@ -34,11 +33,6 @@ const socialLinks = [
     href: "https://www.linkedin.com/in/nitisurakongka/",
     label: "LinkedIn",
     icon: FaLinkedin,
-  },
-  {
-    href: "https://medium.com/@niti2003s",
-    label: "Medium",
-    icon: FaMedium,
   },
 ] as const;
 
