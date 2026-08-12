@@ -55,7 +55,7 @@ const Footer: React.FC = () => {
               Niti Surakongka
             </p>
             <p className="font-Kanit text-sm font-light text-text-muted">
-              Junior Frontend Developer — portfolio & projects
+              Junior Full Stack Developer — portfolio & projects
             </p>
           </div>
           <div>
