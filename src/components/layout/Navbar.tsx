@@ -24,7 +24,7 @@ const NavLink: React.FC<{
   className?: string;
 }> = ({ href, label, external, pathname, onNavigate, className = "" }) => {
   const active = !external && isActive(pathname, href);
-  const linkClass = `sm:px-4 lg:animated-underline ${active ? "font-semibold animated-underline-active" : ""} ${className}`;
+  const linkClass = `btn btn-link rounded-lg text-base text-white no-underline sm:px-4 transition duration-300 hover:bg-primary-content/5 hover:text-base-300 ${active ? "bg-primary-content/15 font-semibold" : ""} ${className}`;
 
   if (external) {
     return (
@@ -52,12 +52,12 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <header className="navbar sticky top-0 z-50 bg-brand-gradient px-4 py-4 shadow-lg backdrop-blur-md">
+      <header className="navbar sticky top-0 z-50 bg-linear-to-r from-primary to-secondary px-4 py-4 shadow-lg backdrop-blur-md">
         <div className="container mx-auto flex w-full items-center justify-between">
           <div className="navbar-start lg:hidden">
           </div>
           <div className="navbar-center">
-            <nav className="menu menu-horizontal p-0 text-base text-white space-x-2 lg:text-lg">
+            <nav className="menu menu-horizontal space-x-2 p-0 text-base text-primary-content lg:text-lg">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <NavLink pathname={pathname} {...link} />

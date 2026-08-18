@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Outfit, Kanit } from "next/font/google";
+import { Noto_Sans_Thai, Outfit, Sarabun } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { MantineProvider } from "@mantine/core";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import AosProvider from "@/components/providers/AosProvider";
 import { mantineTheme } from "@/lib/mantine-theme";
+import "@mantine/core/styles.layer.css";
 import "./globals.css";
-import "@mantine/core/styles.css";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -15,10 +15,17 @@ const outfit = Outfit({
   display: "swap",
 });
 
-const kanit = Kanit({
+const notoSansThai = Noto_Sans_Thai({
   subsets: ["latin", "thai"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-kanit",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-noto-thai",
+  display: "swap",
+});
+
+const sarabun = Sarabun({
+  subsets: ["latin", "thai"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-sarabun",
   display: "swap",
 });
 
@@ -35,7 +42,7 @@ const RootLayout = ({
   return (
     <html lang="th" data-theme="earthport">
       <body
-        className={`${outfit.variable} ${kanit.variable} font-Outfit flex min-h-screen flex-col`}
+        className={`${outfit.variable} ${notoSansThai.variable} ${sarabun.variable} flex min-h-screen flex-col font-thai`}
       >
         <MantineProvider theme={mantineTheme}>
           <AosProvider>

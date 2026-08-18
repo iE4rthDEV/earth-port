@@ -46,20 +46,20 @@ const Footer: React.FC = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-auto border-t border-stone-200 bg-base100">
-      <div className="h-1 bg-brand-gradient" />
-      <div className="container mx-auto px-4 pt-10 pb-6 sm:px-6 sm:pt-0-12">
+    <footer className="mt-auto border-t border-base-300 bg-base-100">
+      <div className="h-1 bg-linear-to-r from-primary to-secondary" />
+      <div className="container mx-auto px-4 pt-10 pb-6 sm:px-6 sm:pt-12">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           <div className="space-y-2">
-            <p className="font-Outfit text-lg font-semibold text-gradient">
+            <p className="text-gradient font-display text-lg font-semibold">
               Niti Surakongka
             </p>
-            <p className="font-Kanit text-sm font-light text-text-muted">
+            <p className="font-thai text-sm font-normal text-base-content/70">
               Junior Full Stack Developer — portfolio & projects
             </p>
           </div>
           <div>
-            <p className="mb-3 font-Outfit text-sm font-semibold uppercase tracking-wide text-stone-700">
+            <p className="mb-3 font-display text-sm font-bold uppercase tracking-wide text-base-content/80">
               Quick links
             </p>
             <ul className="space-y-2">
@@ -70,12 +70,12 @@ const Footer: React.FC = () => {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="link-accent text-sm"
+                      className="link link-primary text-sm font-medium no-underline"
                     >
                       {link.label}
                     </a>
                   ) : (
-                    <Link href={link.href} className="link-accent text-sm">
+                    <Link href={link.href} className="link link-primary text-sm font-medium no-underline">
                       {link.label}
                     </Link>
                   )}
@@ -84,7 +84,7 @@ const Footer: React.FC = () => {
             </ul>
           </div>
           <div>
-            <p className="mb-3 font-Outfit text-sm font-semibold uppercase tracking-wide text-stone-700">
+            <p className="mb-3 font-display text-sm font-bold uppercase tracking-wide text-base-content/80">
               Connect
             </p>
             <div className="flex flex-wrap gap-3">
@@ -95,7 +95,7 @@ const Footer: React.FC = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="text-primary transition hover:scale-110 hover:text-primary-end"
+                  className="text-primary transition hover:scale-110"
                 >
                   <Icon className="h-6 w-6" />
                 </a>
@@ -103,7 +103,7 @@ const Footer: React.FC = () => {
             </div>
           </div>
         </div>
-        <p className="mt-8 border-t border-stone-100 pt-6 text-center text-xs text-text-muted">
+        <p className="mt-8 border-t border-base-300 pt-6 text-center text-xs text-base-content/60">
           © {year} Niti Surakongka. All rights reserved.
         </p>
       </div>

@@ -18,7 +18,7 @@ const PageSection: React.FC<PageSectionProps> = ({
   return (
     <section
       id={id}
-      className={`${muted ? "section-muted" : ""} ${className}`.trim()}
+      className={`${muted ? "bg-base-200" : ""} ${className}`.trim()}
     >
       <div
         className={`container mx-auto px-4 sm:px-6 ${containerClassName}`.trim()}
