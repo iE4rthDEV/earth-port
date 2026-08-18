@@ -25,7 +25,7 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({
     return (
       <h2
         {...aosProps}
-        className={`font-Outfit text-4xl text-center font-medium ${className}`}
+        className={`text-center font-display text-4xl font-bold ${className}`}
       >
         {title}{" "}
         <GradientText as="span" className="font-extrabold">
@@ -38,7 +38,7 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({
   return (
     <h2
       {...aosProps}
-      className={`font-Outfit text-3xl sm:text-5xl font-medium text-center ${className}`}
+      className={`text-center font-display text-3xl font-bold sm:text-5xl ${className}`}
     >
       {title}
     </h2>

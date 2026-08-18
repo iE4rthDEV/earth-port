@@ -58,30 +58,34 @@ const ContactPage: React.FC = () => {
             sequence={["Contact"]}
             wrapper="h2"
             speed={40}
-            className="text-gradient font-Outfit text-4xl font-bold uppercase sm:text-5xl sm:font-black"
+            className="text-gradient font-display text-4xl font-bold uppercase sm:text-5xl sm:font-black"
           />
-          <p className="mt-4 font-Kanit text-base font-light text-stone-600 sm:text-lg">
+          <p className="mt-4 font-thai text-base font-normal leading-7 text-base-content/70 sm:text-lg sm:leading-8">
             ติดต่อผมได้ผ่านช่องทางต่างๆ ด้านล่าง
           </p>
         </div>
         <div className="flex flex-wrap justify-center gap-4">
           {contactItems.map(({ href, label, icon: Icon, delay }) => (
-            <Link
+            <div
               key={href}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
               data-aos="fade-up"
               data-aos-delay={delay}
-              className="card-surface group flex w-full flex-none flex-col items-center gap-4 p-6 transition-all duration-300 hover:scale-105 hover:border-primary/60 hover:shadow-lg sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.667rem)]"
+              className="w-full flex-none sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.667rem)]"
             >
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 transition-all duration-300 group-hover:bg-primary/20">
-                <Icon className="h-8 w-8 text-primary transition-all duration-300 group-hover:h-9 group-hover:w-9 group-hover:text-primary-end" />
-              </div>
-              <span className="link-accent text-center font-Kanit text-base font-medium sm:text-lg">
-                {label}
-              </span>
-            </Link>
+              <Link
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card card-border group flex w-full flex-col items-center gap-4 rounded-box border-base-300 bg-base-100 p-6 shadow-sm transition duration-300 ease-out hover:-translate-y-1 hover:border-primary/60 hover:shadow-lg"
+              >
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 transition-colors duration-300 ease-out group-hover:bg-primary/20">
+                  <Icon className="h-8 w-8 text-primary" />
+                </div>
+                <span className="link link-primary text-center font-thai text-base font-semibold no-underline sm:text-lg">
+                  {label}
+                </span>
+              </Link>
+            </div>
           ))}
         </div>
       </div>

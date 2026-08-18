@@ -1,4 +1,3 @@
-import { Pill } from "@mantine/core";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import {
@@ -39,12 +38,12 @@ const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
 
   return (
     <div className="container mx-auto px-4 py-6 sm:px-6 sm:py-8">
-      <nav className="mb-10 font-Outfit text-sm text-text-muted">
-        <Link href="/projects" className="link-accent">
+      <nav className="mb-10 font-display text-sm text-base-content/60">
+        <Link href="/projects" className="link link-primary no-underline">
           Projects
         </Link>
-        <span className="mx-2">/</span>
-        <span className="text-stone-800">{project.project_name}</span>
+        <span className="mx-1">/</span>
+        <span className="text-base-content/60">{project.project_name}</span>
       </nav>
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
         <div className="order-2 flex items-center justify-center px-0 lg:order-1">
@@ -54,38 +53,38 @@ const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
           />
         </div>
         <div className="order-1 space-y-4 md:space-y-6 lg:order-2">
-          <div className="space-y-2 sm:space-y-3">
-            <h1 className="font-Outfit text-2xl font-medium capitalize md:text-4xl">
+          <div className="space-y-2">
+            <h1 className="font-display text-2xl font-semibold capitalize md:text-4xl">
               {project.project_name}
             </h1>
-            <div className="flex flex-wrap gap-1">
+            <div className="flex flex-wrap gap-1.5">
               {project.project_tag.map((tag) => (
-                <Pill key={tag}>
+                <span className="badge badge-outline badge-sm border-gray-200 bg-gray-50 text-gray-600" key={tag}>
                   {tag}
-                </Pill>
+                </span>
               ))}
             </div>
           </div>
-          <p className="font-Kanit text-base font-light leading-relaxed text-stone-600 md:text-lg">
+          <p className="font-thai text-base font-normal leading-7 text-base-content/70 md:text-lg">
             {project.project_description}
           </p>
           <div>
-            <p className="font-Outfit text-lg font-medium">
+            <p className="font-display text-lg font-semibold mb-1">
               {responsibilitiesLabel}
             </p>
-            <ul className="list-inside list-disc indent-2 font-Kanit text-sm font-light sm:indent-3 sm:text-base">
+            <ul className="list-inside list-disc indent-2 font-thai text-sm font-normal leading-6 text-base-content/80 sm:indent-3 sm:text-[17px] sm:leading-7.5">
               {project.keyResponsibilities.map((keyResponsibility) => (
                 <li key={keyResponsibility}>{keyResponsibility}</li>
               ))}
             </ul>
           </div>
           <div>
-            <p className="font-Outfit text-lg font-semibold">
+            <p className="font-display text-lg font-semibold mb-1">
               Technologies Used
             </p>
-            <ul className="list-inside list-disc indent-3 text-sm sm:indent-5 sm:text-base">
+            <ul className="list-inside list-disc indent-2 font-thai text-sm font-normal leading-6 text-base-content/80 sm:indent-3 sm:text-[17px] sm:leading-7.5">
               {project.technologies_used.map((technology) => (
-                <li className="font-light " key={technology}>
+                <li key={technology}>
                   {technology}
                 </li>
               ))}

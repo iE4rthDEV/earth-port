@@ -1,87 +1,69 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 @plugin "daisyui" {
   themes: earthport --default;
 }
 
+@plugin "daisyui/theme" {
+  name: "earthport";
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
+  --color-base-content: #1c1917;
+  --color-primary: #2563eb;
+  --color-primary-content: #ffffff;
+  --color-secondary: #0284c7;
+  --color-secondary-content: #ffffff;
+  --color-accent: #0284c7;
+  --color-accent-content: #ffffff;
+  --color-neutral: #1c1917;
+  --color-neutral-content: #ffffff;
+  --color-info: #0284c7;
+  --color-info-content: #ffffff;
+  --color-success: #16a34a;
+  --color-success-content: #ffffff;
+  --color-warning: #f59e0b;
+  --color-warning-content: #1c1917;
+  --color-error: #dc2626;
+  --color-error-content: #ffffff;
+  --color-base-100: #ffffff;
+  --color-base-200: #eff6ff;
+  --color-base-300: #dbeafe;
+  --radius-selector: 0.75rem;
+  --radius-field: 9999px;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@theme inline {
+  --font-display: var(--font-outfit), sans-serif;
+  --font-thai: var(--font-noto-thai), var(--font-sarabun), -apple-system,
+    BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
+}
+
 @layer base {
-  :root {
-    --color-base-100: #ffffff;
-    --color-base-200: #eff6ff;
-    --color-base-300: #dbeafe;
-    --color-primary: 37 99 235;
-    --color-primary-end: 2 132 199;
-    --color-secondary: 2 132 199;
-    --color-accent: 2 132 199;
-    --color-neutral: 28 25 23;
-    --color-surface: 255 255 255;
-    --color-surface-muted: 239 246 255;
-    --color-text: 28 25 23;
-    --color-text-muted: 107 114 128;
-    --background: rgb(var(--color-surface));
-    --foreground: rgb(var(--color-text));
+  body {
+    @apply bg-base-100 font-normal text-base-content antialiased;
   }
 
-  body {
-    @apply bg-surface text-stone-900 antialiased;
+  a,
+  a:hover,
+  a:focus-visible,
+  a:active {
+    text-decoration: none;
   }
 }
 
 @layer components {
-  .bg-brand-gradient {
-    background: linear-gradient(
-      to right,
-      rgb(var(--color-primary)),
-      rgb(var(--color-primary-end))
-    );
-  }
-
   .text-gradient {
-    background: linear-gradient(
-      to right,
-      rgb(var(--color-primary)),
-      rgb(var(--color-primary-end))
-    );
+    background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
     @apply bg-clip-text text-transparent;
   }
 
-  .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border-none px-6 py-2.5 text-sm font-semibold text-white transition duration-300 ease-in-out bg-brand-gradient hover:scale-105 hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
-  }
-
-  .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-stone-300 bg-white px-6 py-2.5 text-sm font-semibold text-stone-800 transition duration-300 ease-in-out hover:border-primary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
-  }
-
-  .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-white transition duration-300 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-transparent;
-  }
-
-  .link-accent {
-    @apply text-primary transition duration-300 ease-in-out hover:font-medium hover:text-primary-end;
-  }
-
-  .card-surface {
-    @apply rounded-2xl border border-stone-200 bg-base-100 shadow-sm transition duration-300 hover:border-primary/40 hover:shadow-md;
-  }
-
-  .section-muted {
-    @apply bg-surface-muted;
-  }
-
-  .tech-stack {
-    @apply font-Outfit text-sm sm:text-base cursor-pointer;
-  }
-
-  .tech-stack-2 {
-    @apply flex flex-wrap items-center gap-1 sm:gap-2 font-Outfit text-sm cursor-pointer;
-  }
-
-  .description {
-    @apply text-sm sm:text-base font-Kanit font-light text-stone-600;
-  }
 }
 
 @layer utilities {
@@ -89,42 +71,17 @@
     @apply hover:drop-shadow-[0px_0px_5px_rgba(255,255,255,0.75)];
   }
 
-  .animated-underline {
-    position: relative;
-  }
-
-  .animated-underline::before,
-  .animated-underline::after {
-    content: "";
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    border-top-width: 2px;
-    border-top-color: #ffffff;
-  }
-
-  .animated-underline::before {
-    border-top-style: none;
-    width: 100%;
-  }
-
-  .animated-underline::after {
-    border-top-style: solid;
-    width: 0;
-    transition: width 0.5s ease-in;
-  }
-
-  .animated-underline:hover::after,
-  .animated-underline-active::after {
-    width: 100%;
-  }
-
   .m_5df29311 {
     padding: 0 !important;
   }
 
   .m_54c44539 {
-    @apply no-scrollbar;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .m_54c44539::-webkit-scrollbar {
+    display: none;
   }
 
   .mask-image-gradient {

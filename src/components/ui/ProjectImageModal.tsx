@@ -20,8 +20,8 @@ const ProjectImageModal: React.FC<ProjectImageModalProps> = ({ src, alt }) => {
         alt={alt}
         width={450}
         height={450}
-        loading="lazy"
-        className="rounded-lg border drop-shadow-lg hover:cursor-zoom-in hover:scale-105 duration-300"
+        loading="eager"
+        className="rounded-box border border-base-300 drop-shadow-lg transition duration-300 hover:scale-105 hover:cursor-zoom-in"
         onClick={open}
       />
       <Modal

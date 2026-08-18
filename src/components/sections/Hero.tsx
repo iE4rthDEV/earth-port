@@ -7,8 +7,8 @@ import Button from "@/components/ui/Button";
 
 const Hero: React.FC = () => {
   return (
-    <section className="section-muted">
-      <div className="container mx-auto px-4 sm:px-6">
+    <section className="hero bg-base-200">
+      <div className="hero-content container mx-auto max-w-none px-4 sm:px-6">
         <div className="flex flex-col items-center justify-center gap-10 py-12 sm:gap-16 sm:py-16 lg:flex-row lg:py-20">
           <Image
             data-aos="zoom-in"
@@ -19,22 +19,22 @@ const Hero: React.FC = () => {
             alt="Niti Surakongka"
             width={450}
             height={450}
-            loading="lazy"
-            className="mask-image-gradient h-[380px] w-[400px] rounded-2xl object-cover ring-4 ring-primary/20 sm:h-[440px]"
+            loading="eager"
+            className="mask-image-gradient h-95 w-100 rounded-2xl object-cover ring-4 ring-primary/20 sm:h-110"
           />
           <div className="space-y-4 text-center sm:space-y-6 lg:text-left">
             <TypeAnimation
               sequence={["Niti Surakongka"]}
               wrapper="h1"
               speed={40}
-              className="text-gradient font-Outfit text-3xl font-black uppercase tracking-wide sm:text-5xl"
+              className="text-gradient font-display text-3xl font-black uppercase tracking-wide sm:text-5xl"
             />
             <p
               data-aos="fade-up"
               data-aos-delay="200"
               data-aos-duration="1000"
               data-aos-easing="ease-out"
-              className="font-Kanit mx-auto max-w-3xl text-base font-light leading-relaxed text-stone-600 md:text-balance md:text-xl lg:mx-0"
+              className="mx-auto max-w-3xl font-thai text-base font-normal leading-7 text-base-content/70 md:text-balance md:text-xl md:leading-8 lg:mx-0"
             >
               สวัสดีครับ! ผมชื่อเอิร์ธ หรือ นายนิติ สุระคงคา เป็น Junior Full Stack Developer ที่มีพื้นฐานในการพัฒนา Web Application ด้วยเทคโนโลยีสมัยใหม่
               มีประสบการณ์ในการพัฒนาเว็บไซต์และออกแบบประสบการณ์ผู้ใช้งานในฝั่ง Front-end และ Back-end ผมมีความมุ่งมั่นที่จะพัฒนาโซลูชันเว็บที่สมบูรณ์แบบ
