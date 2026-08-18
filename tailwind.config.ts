@@ -27,4 +27,23 @@ export default {
       },
     },
   },
+  plugins: [require("daisyui")],
+  daisyui: {
+    darkTheme: false,
+    prefersdark: false,
+    defaultTheme: "earthport",
+    themes: [
+      {
+        earthport: {
+          primary: "#2563eb",
+          secondary: "#0284c7",
+          accent: "#0284c7",
+          neutral: "#1c1917",
+          "base-100": "#ffffff",
+          "base-200": "#eff6ff",
+          "base-300": "#dbeafe",
+        },
+      },
+    ],
+  },
 } satisfies Config;
