@@ -13,7 +13,7 @@ const LiveIcon = () => (
     fill="none"
     viewBox="0 0 24 24"
     strokeWidth="1.5"
-    className="size-5 stroke-white"
+    className="size-5 stroke-primary-content"
   >
     <path
       strokeLinecap="round"

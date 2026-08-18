@@ -17,13 +17,13 @@ const TechBadge: React.FC<TechBadgeProps> = ({
   const isSmall = size === "sm";
 
   return (
-    <div
-      className={`flex justify-center items-center text-black space-x-2 border bg-white rounded-xl hover:scale-105 duration-300 ${
+    <span
+      className={`badge badge-outline h-auto justify-center gap-1.5 rounded-xl border-gray-300 bg-base-100 text-base-content cursor-default ${
         isSmall
-          ? "px-2 py-[4px]"
+          ? "px-2.5 py-1"
           : onGradient
-            ? "border-white/80 px-3 py-[4px] shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] sm:px-4 sm:py-[6px]"
-            : "px-3 py-[4px] sm:px-4 sm:py-[6px]"
+            ? "border-primary-content/80 px-3 py-1 shadow-[0_0_15px_rgba(255,255,255,0.25)] sm:px-4 sm:py-1"
+            : "px-3 py-1 sm:px-4 sm:py-1.5"
       }`}
     >
       <Image
@@ -32,10 +32,10 @@ const TechBadge: React.FC<TechBadgeProps> = ({
         src={`https://cdn.simpleicons.org/${iconSlug}`}
         alt=""
         unoptimized
-        className={isSmall ? "w-4 lg:w-5" : "w-4 lg:w-6"}
+        className="w-4"
       />
-      <p>{tag}</p>
-    </div>
+      <span>{tag}</span>
+    </span>
   );
 };
 
