@@ -1,6 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
 
 @plugin "daisyui" {
   themes: earthport --default;
@@ -124,7 +123,11 @@
   }
 
   .m_54c44539 {
-    @apply no-scrollbar;
+    scrollbar-width: none;
+  }
+
+  .m_54c44539::-webkit-scrollbar {
+    display: none;
   }
 
   .mask-image-gradient {

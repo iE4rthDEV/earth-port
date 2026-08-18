@@ -1,17 +1,16 @@
 # Earth Port
 
-Personal portfolio website of **Niti Surakongka (Earth)** — a Junior Full Stack Developer based in Bangkok, Thailand. Built with Next.js 15 (App Router) and TypeScript, it showcases work experience, featured projects, and tech stack through a fast, animated, bilingual (Thai/English) interface.
+Personal portfolio website of **Niti Surakongka (Earth)** — a Junior Full Stack Developer based in Bangkok, Thailand. Built with Next.js 16 (App Router) and TypeScript, it showcases work experience, featured projects, and tech stack through a fast, animated, bilingual (Thai/English) interface.
 
 ## Tech Stack
 
 | Category | Technologies |
 | --- | --- |
-| Framework | [Next.js 15](https://nextjs.org/) (App Router, Turbopack) |
+| Framework | [Next.js 16](https://nextjs.org/) (App Router, Turbopack) |
 | Language | TypeScript, React 19 |
 | Styling / UI | Tailwind CSS, DaisyUI, Mantine (`@mantine/core`, `@mantine/hooks`) |
 | Animation | AOS (Animate On Scroll), `react-type-animation` |
 | Icons | `react-icons` |
-| HTTP | Axios |
 | Monitoring | Vercel Speed Insights |
 | Linting | ESLint (`eslint-config-next`) |
 
