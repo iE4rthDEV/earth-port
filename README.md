@@ -1,14 +1,15 @@
 # Earth Port
 
-Personal portfolio website of **Niti Surakongka (Earth)** — a Junior Full Stack Developer based in Bangkok, Thailand. Built with Next.js 15 (App Router) and TypeScript, it showcases work experience, featured projects, and tech stack through a fast, animated, bilingual (Thai/English) interface.
+Personal portfolio website of **Niti Surakongka (Earth)**, a Junior Full Stack Developer based in Bangkok, Thailand. Built with Next.js 16, React 19, TypeScript, Tailwind CSS 4, and daisyUI 5, the website presents professional experience, featured projects, and technical skills through a responsive bilingual interface focused on readability, accessibility, and performance.
 
 ## Tech Stack
 
 | Category | Technologies |
 | --- | --- |
-| Framework | [Next.js 15](https://nextjs.org/) (App Router, Turbopack) |
+| Framework | [Next.js 16](https://nextjs.org/) (App Router, Turbopack) |
 | Language | TypeScript, React 19 |
-| Styling / UI | Tailwind CSS, DaisyUI, Mantine (`@mantine/core`, `@mantine/hooks`) |
+| Styling / UI | Tailwind CSS 4, daisyUI 5, Mantine (`@mantine/core`, `@mantine/hooks`) |
+| Typography | Noto Sans Thai, Sarabun, Outfit |
 | Animation | AOS (Animate On Scroll), `react-type-animation` |
 | Icons | `react-icons` |
 | HTTP | Axios |
@@ -24,7 +25,7 @@ Personal portfolio website of **Niti Surakongka (Earth)** — a Junior Full Stac
 - **Project detail pages** — dynamic routes (`/projects/[slug]`) with an image preview modal
 - **Tech stack showcase** — visual grid of tools and languages used
 - **Contact page** — quick links to Facebook, Line, phone, GitHub, and LinkedIn
-- Fully responsive layout with scroll animations (AOS) and Thai/English typography (Kanit + Outfit fonts)
+- Fully responsive interface with AOS scroll animations and optimized Thai/English typography using Noto Sans Thai, Sarabun, and Outfit
 
 ## Project Structure
 
