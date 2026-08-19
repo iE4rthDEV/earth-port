@@ -2,9 +2,11 @@ import Link from "next/link";
 import React from "react";
 
 type ButtonVariant = "primary" | "secondary" | "ghost";
+type ButtonSize = "md" | "lg";
 
 interface ButtonBaseProps {
   variant?: ButtonVariant;
+  size?: ButtonSize;
   className?: string;
   children: React.ReactNode;
 }
@@ -25,21 +27,24 @@ interface ButtonAsLinkProps extends ButtonBaseProps {
 type ButtonProps = ButtonAsButtonProps | ButtonAsLinkProps;
 
 const variantClasses: Record<ButtonVariant, string> = {
-  primary:
-    "btn btn-primary rounded-full border-none bg-linear-to-r from-primary to-secondary px-6 py-2.5 text-sm font-semibold text-primary-content transition duration-300 hover:scale-105 hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
-  secondary:
-    "btn btn-outline rounded-full border-gray-300 bg-gray-50 px-6 py-2.5 text-sm font-semibold text-gray-700 transition duration-300 hover:border-primary hover:bg-gray-100 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
-  ghost:
-    "btn btn-ghost rounded-full px-4 py-2 text-sm font-medium text-primary-content transition duration-300 hover:bg-primary-content/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-content focus-visible:ring-offset-2 focus-visible:ring-offset-transparent",
+  primary: "btn-primary",
+  secondary: "btn-outline",
+  ghost: "btn-ghost",
+};
+
+const sizeClasses: Record<ButtonSize, string> = {
+  md: "min-h-11 px-6",
+  lg: "min-h-12 px-7",
 };
 
 const Button: React.FC<ButtonProps> = ({
   variant = "primary",
+  size = "md",
   className = "",
   children,
   ...props
 }) => {
-  const classes = `${variantClasses[variant]} ${className}`.trim();
+  const classes = `btn ${variantClasses[variant]} ${sizeClasses[size]} rounded-field text-sm font-semibold transition-colors duration-fast ${className}`.trim();
 
   if ("href" in props && props.href) {
     const { href, external } = props;
