@@ -9,6 +9,7 @@ import TechBadge from "./TechBadge";
 interface ProjectCardProps {
   project: Project;
   variant?: "grid" | "list";
+  eagerImage?: boolean;
 }
 
 const getCardSummary = (project: Project): string => {
@@ -19,6 +20,7 @@ const getCardSummary = (project: Project): string => {
 const ProjectCard: React.FC<ProjectCardProps> = ({
   project,
   variant = "grid",
+  eagerImage = false,
 }) => {
   const summary = getCardSummary(project);
   const detailHref = getProjectPath(project);
@@ -63,26 +65,29 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     );
   }
 
+  const headingId = `project-${project.project_id}-title`;
+
   return (
-    <Link
-      href={detailHref}
-      className="card card-border block w-full min-w-0 overflow-hidden rounded-box border-gray-200 bg-base-100 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-md"
-    >
-      <figure className="relative border-b border-gray-200">
+    <article className="card card-border group relative h-full w-full min-w-0 overflow-hidden border-base-300 bg-base-100 shadow-card transition-[transform,box-shadow,border-color] duration-normal hover:-translate-y-1 hover:border-primary/40 hover:shadow-card-hover">
+      <figure className="relative aspect-video border-b border-base-300">
         <Image
           width={450}
           height={450}
           src={project.project_image}
           alt={project.project_name}
-          className="w-full h-96 object-cover object-top"
-          loading="lazy"
+          className="h-full w-full object-cover object-top"
+          loading={eagerImage ? "eager" : "lazy"}
+          sizes="(max-width: 639px) calc(100vw - 2rem), (max-width: 1023px) calc(50vw - 2.25rem), 25rem"
         />
         {project.starred && (
           <FaStar className="absolute top-3 right-3 h-7 w-7 text-warning drop-shadow" />
         )}
       </figure>
       <div className="card-body p-5 lg:py-6">
-        <h2 className="card-title line-clamp-1 font-display text-base font-semibold capitalize transition duration-300 hover:text-primary sm:text-xl">
+        <h2
+          id={headingId}
+          className="card-title text-card-title line-clamp-2 font-display font-semibold capitalize transition-colors duration-fast group-hover:text-primary"
+        >
           {project.project_name}
         </h2>
         <p className="line-clamp-2 font-thai text-sm font-normal text-base-content/70">
@@ -92,7 +97,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           <span className="btn btn-soft btn-primary btn-block">View more</span>
         </div>
       </div>
-    </Link>
+      <Link
+        href={detailHref}
+        aria-labelledby={headingId}
+        className="absolute inset-0 rounded-box"
+      />
+    </article>
   );
 };
 
