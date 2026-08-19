@@ -9,34 +9,54 @@
   default: true;
   prefersdark: false;
   color-scheme: light;
-  --color-base-content: #1c1917;
-  --color-primary: #2563eb;
-  --color-primary-content: #ffffff;
-  --color-secondary: #0284c7;
-  --color-secondary-content: #ffffff;
-  --color-accent: #0284c7;
-  --color-accent-content: #ffffff;
-  --color-neutral: #1c1917;
-  --color-neutral-content: #ffffff;
-  --color-info: #0284c7;
-  --color-info-content: #ffffff;
-  --color-success: #16a34a;
-  --color-success-content: #ffffff;
-  --color-warning: #f59e0b;
-  --color-warning-content: #1c1917;
-  --color-error: #dc2626;
-  --color-error-content: #ffffff;
   --color-base-100: #ffffff;
-  --color-base-200: #eff6ff;
-  --color-base-300: #dbeafe;
-  --radius-selector: 0.75rem;
+  --color-base-200: #f9f9f9;
+  --color-base-300: #f1f1f1;
+  --color-base-content: #1e1e1e;
+  --color-primary: #0052ff;
+  --color-primary-content: #ffffff;
+  --color-secondary: #00b4ff;
+  --color-secondary-content: #1e1e1e;
+  --color-accent: #56ffc6;
+  --color-accent-content: #1e1e1e;
+  --color-neutral: #4b4b4b;
+  --color-neutral-content: #ffffff;
+  --color-info: #357df0;
+  --color-info-content: #ffffff;
+  --color-success: #067647;
+  --color-success-content: #ffffff;
+  --color-warning: #ff8c05;
+  --color-warning-content: #1e1e1e;
+  --color-error: #b42318;
+  --color-error-content: #ffffff;
+  --radius-selector: 0.375rem;
   --radius-field: 9999px;
-  --radius-box: 1rem;
+  --radius-box: 1.5rem;
   --size-selector: 0.25rem;
   --size-field: 0.25rem;
   --border: 1px;
   --depth: 0;
   --noise: 0;
+}
+
+@theme {
+  --text-display: clamp(2rem, 1.5rem + 2.5vw, 3.75rem);
+  --text-page-title: clamp(2rem, 1.65rem + 1.75vw, 3rem);
+  --text-project-title: clamp(1.75rem, 1.45rem + 1.35vw, 2.5rem);
+  --text-section-title: clamp(1.75rem, 1.55rem + 1vw, 2.25rem);
+  --text-card-title: clamp(1rem, 0.95rem + 0.3vw, 1.375rem);
+  --shadow-card: 0 8px 24px rgb(30 30 30 / 6%);
+  --shadow-card-hover: 0 12px 30px rgb(30 30 30 / 9%);
+  --shadow-card-brand: 0 4px 12px #8fb1ee24;
+  --shadow-card-brand-hover: 0 8px 18px #8fb1ee40, 0 14px 28px #8fb1ee18;
+  --shadow-navbar: 0 8px 20px -10px #8fb1ee40;
+  --color-brand-50: #eef3ff;
+  --hero-campaign-surface: #edf4ff;
+  --color-hero-profile-shadow: #8fb1ee;
+  --container-page: 80rem;
+  --container-measure: 65ch;
+  --duration-fast: 160ms;
+  --duration-normal: 420ms;
 }
 
 @theme inline {
@@ -45,9 +65,26 @@
     BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
 }
 
+html[data-theme="earthport"] {
+  color-scheme: light dark;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+}
+
+html[data-theme="earthport"]::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-base-100 font-normal text-base-content antialiased;
+    word-break: normal;
   }
 
   a,
@@ -56,14 +93,98 @@
   a:active {
     text-decoration: none;
   }
+
+  :focus-visible {
+    outline: 2px solid #357df0;
+    outline-offset: 2px;
+  }
+
+  [id] {
+    scroll-margin-top: 5rem;
+  }
 }
 
 @layer components {
   .text-gradient {
-    background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+    background: linear-gradient(to right, #0052ff, #0038b6);
     @apply bg-clip-text text-transparent;
   }
 
+  .tech-stack-gradient {
+    background:
+      radial-gradient(
+        circle at 14% 0%,
+        color-mix(in srgb, #fff 18%, transparent),
+        transparent 34%
+      ),
+      radial-gradient(
+        circle at 92% 112%,
+        color-mix(in srgb, #56ffc6 14%, transparent),
+        transparent 34%
+      ),
+      linear-gradient(135deg, #0038b6, #0052ff 56%, #0047dc);
+  }
+
+  .hero-atmosphere {
+    background: linear-gradient(
+      180deg,
+      var(--hero-campaign-surface),
+      var(--color-base-100)
+    );
+  }
+
+  .contact-atmosphere {
+    background: linear-gradient(
+      180deg,
+      var(--color-brand-50) 0%,
+      var(--color-base-100) 72%
+    );
+  }
+
+  .hero-profile-frame {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .hero-profile-frame::before {
+    position: absolute;
+    inset: -1rem -0.75rem -1.25rem;
+    z-index: -1;
+    border-radius: inherit;
+    background: linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--color-hero-profile-shadow) 25%, transparent) 0%,
+      color-mix(in srgb, var(--color-hero-profile-shadow) 16%, transparent) 45%,
+      color-mix(in srgb, var(--color-hero-profile-shadow) 7%, transparent) 78%,
+      transparent 100%
+    );
+    filter: blur(18px);
+    content: "";
+    pointer-events: none;
+  }
+
+  .navbar-shell {
+    isolation: isolate;
+    overflow: visible;
+    transition: box-shadow var(--duration-normal) ease-out;
+  }
+
+  .navbar-shell[data-scrolled="true"] {
+    box-shadow: var(--shadow-navbar);
+  }
+
+  .navbar-shell > .navbar {
+    position: relative;
+    z-index: 10;
+  }
+}
+
+@utility duration-fast {
+  transition-duration: var(--duration-fast);
+}
+
+@utility duration-normal {
+  transition-duration: var(--duration-normal);
 }
 
 @layer utilities {
@@ -75,31 +196,33 @@
     padding: 0 !important;
   }
 
-  .m_54c44539 {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  .m_54c44539::-webkit-scrollbar {
-    display: none;
-  }
-
   .mask-image-gradient {
     -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, black 10%);
     mask-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, black 10%);
   }
-
-  html::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* สำหรับ Firefox */
-  html {
-    scrollbar-width: none;
-  }
 }
 
 @media (width < 40rem) {
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
   [data-aos] {
     opacity: 1 !important;
     transform: none !important;

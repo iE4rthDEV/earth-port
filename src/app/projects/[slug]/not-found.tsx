@@ -1,19 +1,23 @@
 import React from "react";
 import Button from "@/components/ui/Button";
+import PageSection from "@/components/ui/PageSection";
 
 const ProjectNotFound = () => {
   return (
-    <div className="container mx-auto space-y-4 px-4 py-20 text-center">
-      <p className="font-display text-2xl font-bold text-error">
+    <PageSection
+      spacing="default"
+      containerClassName="flex min-h-[50vh] flex-col items-center justify-center gap-4 text-center"
+    >
+      <h1 className="text-page-title font-display font-semibold text-error">
         Project not found
-      </p>
+      </h1>
       <p className="font-thai font-normal leading-7 text-base-content/70">
         ไม่พบโปรเจกต์ที่คุณต้องการ
       </p>
-      <Button href="/projects" variant="primary" className="leading-6">
-        กลับไปหน้า Projects
+      <Button href="/projects" variant="primary">
+        Back to Projects
       </Button>
-    </div>
+    </PageSection>
   );
 };
 

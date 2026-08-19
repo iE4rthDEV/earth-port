@@ -8,11 +8,12 @@ const ProjectsGrid = () => {
   const projects = getFeaturedProjects();
 
   return (
-    <PageSection containerClassName="py-10 sm:py-20">
+    <PageSection id="featured-projects" labelledBy="featured-projects-heading">
       <div className="mb-8 sm:mb-10">
         <SectionHeading
           title="Curated"
           highlight="Works"
+          id="featured-projects-heading"
           aosProps={{
             "data-aos": "fade-down",
             "data-aos-delay": "100",
@@ -25,13 +26,16 @@ const ProjectsGrid = () => {
         data-aos="fade-up"
         data-aos-easing="ease-out"
         data-aos-duration="800"
-        className="flex justify-center"
+        className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8"
       >
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-3">
-          {projects.map((project) => (
-            <ProjectCard key={project.project_id} project={project} variant="grid" />
-          ))}
-        </div>
+        {projects.map((project, index) => (
+          <ProjectCard
+            key={project.project_id}
+            project={project}
+            variant="grid"
+            eagerImage={index === 0}
+          />
+        ))}
       </div>
     </PageSection>
   );
