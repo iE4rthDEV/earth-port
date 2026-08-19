@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test:e2e": "playwright test",
+    "test:e2e:headed": "playwright test --headed"
   },
   "dependencies": {
     "@mantine/core": "^7.17.1",
@@ -23,6 +25,7 @@
     "react-type-animation": "^3.2.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.62.1",
     "@types/aos": "^3.0.7",
     "@types/node": "^20",
     "@types/react": "^19",
