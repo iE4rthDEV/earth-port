@@ -66,7 +66,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   return (
     <Link
       href={detailHref}
-      className="card card-border block w-72 overflow-hidden rounded-box border-gray-200 bg-base-100 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-md sm:w-80 lg:w-96"
+      className="card card-border block w-full min-w-0 overflow-hidden rounded-box border-gray-200 bg-base-100 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-md"
     >
       <figure className="relative border-b border-gray-200">
         <Image
