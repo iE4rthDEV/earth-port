@@ -73,7 +73,7 @@ const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
           data-project-description
           className="lg:col-start-2 lg:row-start-2"
         >
-          <p className="max-w-(--container-measure) font-thai text-base leading-7 text-base-content/75 sm:text-lg sm:leading-8">
+          <p className="max-w-measure font-thai text-base leading-7 text-base-content/75 sm:text-lg sm:leading-8">
             {project.project_description}
           </p>
         </div>
