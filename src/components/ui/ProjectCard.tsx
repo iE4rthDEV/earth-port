@@ -27,41 +27,46 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
   if (variant === "list") {
     return (
-      <div className="card card-border overflow-hidden rounded-box border-gray-100 bg-base-100 shadow-sm transition duration-300 hover:border-primary/40 hover:bg-base-200/50 hover:shadow-md md:card-side">
-        <Link href={detailHref} className="relative shrink-0">
+      <article className="card card-border group relative overflow-hidden border-base-300 bg-base-100 shadow-card transition-[box-shadow,border-color] duration-normal hover:border-primary/40 hover:shadow-card-hover md:card-side">
+        <figure className="relative aspect-video w-full shrink-0 border-b border-base-300 md:aspect-[4/3] md:w-80 md:border-r md:border-b-0 xl:w-96">
           <Image
             src={project.project_image}
             alt={project.project_name}
             width={450}
             height={450}
-            loading="lazy"
-            className="aspect-video h-auto rounded-t-xl border-b border-gray-200 object-cover object-top sm:w-72 sm:rounded-s-xl sm:rounded-e-none sm:border-b-0 sm:border-r md:w-80 md:h-full xl:w-md"
+            loading={eagerImage ? "eager" : "lazy"}
+            sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1279px) 20rem, 24rem"
+            className="h-full w-full object-cover object-top"
           />
-        </Link>
-        <div className="card-body p-4 md:p-6">
-          <Link href={detailHref}>
-            <h2 className="card-title font-display text-2xl font-semibold transition duration-300 hover:text-primary">
+          {project.starred && (
+            <FaStar className="absolute top-3 right-3 size-7 text-warning drop-shadow" />
+          )}
+        </figure>
+        <div className="card-body min-w-0 p-5 sm:p-6">
+          <Link
+            href={detailHref}
+            aria-label={`View project details: ${project.project_name}`}
+            className="after:absolute after:inset-0 focus-visible:rounded-box"
+          >
+            <h2 className="card-title text-card-title line-clamp-2 font-display font-semibold transition-colors duration-fast group-hover:text-primary">
               {project.project_name}
             </h2>
           </Link>
-          <div className="flex cursor-pointer flex-wrap items-center gap-1 font-display text-sm sm:gap-2">
+          <div className="flex flex-wrap items-center gap-1 font-display text-sm sm:gap-2">
             {project.project_tag.map((tag) => (
               <TechBadge key={tag} tag={tag} size="sm" />
             ))}
           </div>
-          <p className="font-thai text-sm font-normal leading-7 text-base-content/70 line-clamp-2 sm:text-[17px] sm:leading-7.5 md:line-clamp-3 lg:line-clamp-none">
+          <p className="line-clamp-3 font-thai text-sm leading-6 text-base-content/70 sm:text-base sm:leading-7 lg:line-clamp-none">
             {summary}
           </p>
           <div className="mt-2">
-            <Link href={detailHref} className="btn btn-primary px-8">
-              View more
-            </Link>
+            <span className="btn btn-soft pointer-events-none min-h-11 px-6">
+              View project details
+            </span>
           </div>
         </div>
-        {project.starred && (
-          <FaStar className="absolute top-3 right-3 h-7 w-7 text-warning drop-shadow" />
-        )}
-      </div>
+      </article>
     );
   }
 
