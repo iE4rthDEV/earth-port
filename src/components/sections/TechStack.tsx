@@ -6,7 +6,7 @@ const TechStack: React.FC = () => {
   return (
     <section
       aria-labelledby="technology-heading"
-      className="bg-linear-to-r from-primary to-secondary"
+      className="tech-stack-gradient"
     >
       <div className="mx-auto flex w-full max-w-(--container-page) flex-col items-center justify-center px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
         <h2
@@ -19,14 +19,16 @@ const TechStack: React.FC = () => {
           Technologies I use
         </h2>
         <div
-          data-aos="zoom-in-up"
-          data-aos-duration="1000"
-          data-aos-easing="ease-out"
-          data-aos-anchor-placement="top-bottom"
-          className="mt-5 flex max-w-5xl flex-wrap items-center justify-center gap-2 font-display text-sm sm:mt-6 sm:gap-3 sm:text-base sm:font-medium"
+          className="mt-5 flex max-w-5xl flex-wrap items-center justify-center gap-1.5 font-display text-sm sm:mt-6 sm:gap-2 sm:text-base sm:font-medium"
         >
-          {TECH_STACK_TAGS.map((tag) => (
-            <TechBadge key={tag} tag={tag} onGradient />
+          {TECH_STACK_TAGS.map((tag, index) => (
+            <TechBadge
+              key={tag}
+              tag={tag}
+              onGradient
+              aosDelay={index * 40}
+              aosAnchor="#technology-heading"
+            />
           ))}
         </div>
       </div>

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const navLinks = [
   { href: "/", label: "Home", external: false },
@@ -24,7 +24,7 @@ const NavLink: React.FC<{
   className?: string;
 }> = ({ href, label, external, pathname, onNavigate, className = "" }) => {
   const active = !external && isActive(pathname, href);
-  const linkClass = `btn btn-ghost min-h-11 justify-start px-4 text-base font-medium transition-colors duration-fast md:justify-center ${active ? "bg-primary/10 font-semibold text-primary" : "text-base-content/75 hover:bg-base-200 hover:text-base-content"} ${className}`.trim();
+  const linkClass = `btn btn-ghost text-sm border-0 min-h-10 justify-start px-4.5 text-base font-medium transition-colors duration-fast md:justify-center ${active ? "bg-primary/10 font-semibold text-primary" : "text-base-content/75 hover:bg-primary/10 hover:text-primary"} ${className}`.trim();
 
   if (external) {
     return (
@@ -57,6 +57,18 @@ const Navbar: React.FC = () => {
   const pathname = usePathname();
   const triggerRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = (): void => {
+      setIsScrolled(window.scrollY > 24);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const restoreTriggerFocus = (): void => {
     requestAnimationFrame(() => triggerRef.current?.focus());
@@ -66,8 +78,11 @@ const Navbar: React.FC = () => {
   const closeMenu = (): void => dialogRef.current?.close();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-base-300 bg-base-100/95 backdrop-blur">
-      <div className="navbar mx-auto max-w-(--container-page) px-4 sm:px-6 lg:px-8">
+    <header
+      className="navbar-shell sticky top-0 z-50 border-b border-base-300 bg-base-100"
+      data-scrolled={isScrolled}
+    >
+      <div className="navbar relative z-10 mx-auto max-w-(--container-page) px-4 sm:px-6 lg:px-8">
         <div className="navbar-start">
           <Link
             href="/"
@@ -81,7 +96,7 @@ const Navbar: React.FC = () => {
           aria-label="Primary navigation"
           className="navbar-end hidden md:flex"
         >
-          <ul className="menu menu-horizontal gap-1 p-0">
+          <ul className="menu menu-horizontal gap-1.5 p-0">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <NavLink pathname={pathname} {...link} />

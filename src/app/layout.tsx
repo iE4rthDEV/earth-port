@@ -40,7 +40,7 @@ const RootLayout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <html lang="th" data-theme="earthport">
+    <html lang="th" data-theme="earthport" data-scroll-behavior="smooth">
       <body
         className={`${outfit.variable} ${notoSansThai.variable} ${sarabun.variable} flex min-h-screen flex-col font-thai`}
       >

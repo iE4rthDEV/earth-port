@@ -67,7 +67,7 @@ const Footer: React.FC = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                className="link link-hover min-h-11 content-center text-sm font-medium text-primary"
+                className="link link-hover content-center text-sm font-medium text-primary py-1"
               >
                 {link.label}
               </Link>
@@ -86,7 +86,7 @@ const Footer: React.FC = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="btn btn-ghost btn-square min-h-11 min-w-11 text-primary transition-colors duration-fast hover:bg-primary/10"
+                  className="btn btn-ghost btn-square text-primary transition-colors duration-fast hover:bg-primary/10"
                 >
                   <Icon className="size-6" />
                 </a>

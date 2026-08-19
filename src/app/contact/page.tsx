@@ -50,9 +50,9 @@ const contactItems = [
 const ContactPage: React.FC = () => {
   return (
     <PageSection
-      muted
-      className="min-h-[calc(100vh-5rem)]"
-      containerClassName="flex min-h-[inherit] items-center justify-center py-16 sm:py-20"
+      spacing="compact"
+      className="contact-atmosphere min-h-[calc(100vh-5rem)]"
+      containerClassName="flex min-h-[inherit] items-start justify-center"
     >
       <div className="w-full max-w-5xl">
         <div className="mb-10 text-center sm:mb-12">
@@ -68,7 +68,7 @@ const ContactPage: React.FC = () => {
                 key={href}
                 data-aos="fade-up"
                 data-aos-delay={delay}
-                className="card card-border h-full overflow-hidden border-base-300 bg-base-100 shadow-sm"
+                className="card card-border group h-full overflow-hidden border-base-300 bg-base-100 shadow-card-brand transition-[box-shadow,border-color] duration-normal hover:border-primary/40 hover:shadow-card-brand-hover"
               >
                 <a
                   href={href}
@@ -79,7 +79,7 @@ const ContactPage: React.FC = () => {
                       ? "noopener noreferrer"
                       : undefined
                   }
-                  className="group flex h-full min-h-11 w-full flex-col items-center justify-center gap-4 rounded-box p-6 transition duration-300 ease-out hover:-translate-y-1 hover:bg-base-200 hover:shadow-lg"
+                  className="flex h-full min-h-11 w-full flex-col items-center justify-center gap-4 rounded-box p-6 transition-colors duration-normal ease-out hover:bg-base-200"
                 >
                   <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 transition-colors duration-300 ease-out group-hover:bg-primary/20">
                     <Icon

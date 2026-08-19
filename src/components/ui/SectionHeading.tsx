@@ -40,7 +40,7 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({
         className={`${headingClasses} ${className}`.trim()}
       >
         {title}{" "}
-        <GradientText as="span" className="font-bold">
+        <GradientText as="span" className="font-extrabold">
           {highlight}
         </GradientText>
       </Heading>
