@@ -7,6 +7,7 @@ import {
 } from "@/lib/projects";
 import ProjectImageModal from "@/components/ui/ProjectImageModal";
 import ProjectLinks from "@/components/ui/ProjectLinks";
+import TechBadge from "@/components/ui/TechBadge";
 import { formatResponsibilities } from "@/types/project";
 
 export const generateStaticParams = () => {
@@ -33,63 +34,87 @@ const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
 
   const project = projectBySlug;
   const responsibilitiesLabel = formatResponsibilities(
-    project.project_responsibilities
+    project.project_responsibilities,
   );
 
   return (
-    <div className="container mx-auto px-4 py-6 sm:px-6 sm:py-8">
-      <nav className="mb-10 font-display text-sm text-base-content/60">
+    <div className="mx-auto w-full max-w-(--container-page) px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-16">
+      <nav
+        aria-label="Breadcrumb"
+        className="mb-8 font-display text-sm text-base-content/60 lg:mb-10"
+      >
         <Link href="/projects" className="link link-primary no-underline">
           Projects
         </Link>
         <span className="mx-1">/</span>
         <span className="text-base-content/60">{project.project_name}</span>
       </nav>
-      <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
-        <div className="order-2 flex items-center justify-center px-0 lg:order-1">
+
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:content-start lg:gap-x-12 lg:gap-y-6">
+        <div className="space-y-3 lg:col-start-2 lg:row-start-1">
+          <h1 className="text-page-title text-balance font-display font-semibold leading-tight capitalize">
+            {project.project_name}
+          </h1>
+          <div className="flex flex-wrap gap-2">
+            {project.project_tag.map((tag) => (
+              <TechBadge key={tag} tag={tag} size="sm" />
+            ))}
+          </div>
+        </div>
+
+        <div className="lg:col-start-1 lg:row-start-1 lg:row-span-5 lg:self-start">
           <ProjectImageModal
             src={project.project_image}
             alt={project.project_name}
           />
         </div>
-        <div className="order-1 space-y-4 md:space-y-6 lg:order-2">
-          <div className="space-y-2">
-            <h1 className="font-display text-2xl font-semibold capitalize md:text-4xl">
-              {project.project_name}
-            </h1>
-            <div className="flex flex-wrap gap-1.5">
-              {project.project_tag.map((tag) => (
-                <span className="badge badge-outline badge-sm border-gray-200 bg-gray-50 text-gray-600" key={tag}>
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-          <p className="font-thai text-base font-normal leading-7 text-base-content/70 md:text-lg">
+
+        <div
+          data-project-description
+          className="lg:col-start-2 lg:row-start-2"
+        >
+          <p className="max-w-(--container-measure) font-thai text-base leading-7 text-base-content/75 sm:text-lg sm:leading-8">
             {project.project_description}
           </p>
-          <div>
-            <p className="font-display text-lg font-semibold mb-1">
-              {responsibilitiesLabel}
-            </p>
-            <ul className="list-inside list-disc indent-2 font-thai text-sm font-normal leading-6 text-base-content/80 sm:indent-3 sm:text-[17px] sm:leading-7.5">
-              {project.keyResponsibilities.map((keyResponsibility) => (
-                <li key={keyResponsibility}>{keyResponsibility}</li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <p className="font-display text-lg font-semibold mb-1">
-              Technologies Used
-            </p>
-            <ul className="list-inside list-disc indent-2 font-thai text-sm font-normal leading-6 text-base-content/80 sm:indent-3 sm:text-[17px] sm:leading-7.5">
-              {project.technologies_used.map((technology) => (
-                <li key={technology}>
-                  {technology}
-                </li>
-              ))}
-            </ul>
-          </div>
+        </div>
+
+        <section
+          data-project-responsibilities
+          aria-labelledby="responsibilities-heading"
+          className="lg:col-start-2 lg:row-start-3"
+        >
+          <h2
+            id="responsibilities-heading"
+            className="mb-2 font-display text-lg font-semibold"
+          >
+            {responsibilitiesLabel}
+          </h2>
+          <ul className="list-outside list-disc space-y-2 ps-5 font-thai text-base leading-7 text-base-content/80">
+            {project.keyResponsibilities.map((keyResponsibility) => (
+              <li key={keyResponsibility}>{keyResponsibility}</li>
+            ))}
+          </ul>
+        </section>
+
+        <section
+          data-project-technologies
+          aria-labelledby="technologies-used-heading"
+          className="lg:col-start-2 lg:row-start-4"
+        >
+          <h2
+            id="technologies-used-heading"
+            className="mb-2 font-display text-lg font-semibold"
+          >
+            Technologies Used
+          </h2>
+          <ul className="list-outside list-disc space-y-2 ps-5 font-thai text-base leading-7 text-base-content/80">
+            {project.technologies_used.map((technology) => (
+              <li key={technology}>{technology}</li>
+            ))}
+          </ul>
+        </section>
+
+        <div className="lg:col-start-2 lg:row-start-5">
           <ProjectLinks
             liveUrl={project.live_url}
             githubUrl={project.github_url}

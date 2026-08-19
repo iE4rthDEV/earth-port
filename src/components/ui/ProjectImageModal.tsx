@@ -15,19 +15,27 @@ const ProjectImageModal: React.FC<ProjectImageModalProps> = ({ src, alt }) => {
 
   return (
     <>
-      <Image
-        src={src}
-        alt={alt}
-        width={450}
-        height={450}
-        loading="eager"
-        className="rounded-box border border-base-300 drop-shadow-lg transition duration-300 hover:scale-105 hover:cursor-zoom-in"
+      <button
+        type="button"
+        data-project-image
+        aria-label={`Enlarge ${alt} image`}
+        className="block w-full cursor-zoom-in rounded-box focus-visible:outline-offset-4 lg:aspect-[4/3] lg:overflow-hidden"
         onClick={open}
-      />
+      >
+        <Image
+          src={src}
+          alt={alt}
+          width={1080}
+          height={1080}
+          loading="eager"
+          sizes="(max-width: 1023px) calc(100vw - 2rem), 40rem"
+          className="h-auto w-full rounded-box border border-base-300 object-cover shadow-lg lg:h-full"
+        />
+      </button>
       <Modal
         opened={opened}
         onClose={close}
-        withCloseButton={false}
+        title={`Preview of ${alt}`}
         overlayProps={{
           backgroundOpacity: 0.55,
           blur: 4,
@@ -35,7 +43,14 @@ const ProjectImageModal: React.FC<ProjectImageModalProps> = ({ src, alt }) => {
         size="lg"
         centered
       >
-        <Image src={src} alt={alt} width={1080} height={1080} />
+        <Image
+          src={src}
+          alt={alt}
+          width={1080}
+          height={1080}
+          sizes="(max-width: 767px) calc(100vw - 3rem), 48rem"
+          className="h-auto w-full rounded-box"
+        />
       </Modal>
     </>
   );
