@@ -4,9 +4,9 @@ import Button from "@/components/ui/Button";
 
 const Hero: React.FC = () => {
   return (
-    <section className="hero bg-base-200">
+    <section className="hero hero-atmosphere min-h-[calc(100svh-7rem)] lg:min-h-[calc(100vh-8rem)]">
       <div className="hero-content mx-auto w-full max-w-(--container-page) flex-col gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid lg:grid-cols-[minmax(20rem,0.8fr)_minmax(0,1.2fr)] lg:gap-16 lg:px-8 lg:py-24">
-        <div className="order-1 space-y-5 text-center lg:order-2 lg:text-left">
+        <div className="order-2 space-y-5 text-center lg:order-2 lg:text-left">
           <h1 className="text-gradient text-display font-display leading-tight font-black">
             Niti Surakongka
           </h1>
@@ -18,16 +18,26 @@ const Hero: React.FC = () => {
             Front-end และ Back-end
             และมุ่งมั่นพัฒนาทักษะการเป็นนักพัฒนาซอฟต์แวร์อย่างต่อเนื่อง
           </p>
-          <div className="flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
-            <Button href="/projects" variant="primary" size="lg">
+          <div className="flex flex-row gap-2 max-[359px]:flex-col sm:gap-3 sm:justify-center lg:justify-start">
+            <Button
+              href="/projects"
+              variant="primary"
+              size="lg"
+              className="flex-1 px-4 sm:flex-none sm:px-7"
+            >
               View Projects
             </Button>
-            <Button href="/contact" variant="secondary" size="lg">
+            <Button
+              href="/contact"
+              variant="secondary"
+              size="lg"
+              className="flex-1 border-base-content/20 px-4 text-base-content hover:border-primary hover:bg-transparent hover:text-primary sm:flex-none sm:px-7"
+            >
               Contact
             </Button>
           </div>
         </div>
-        <figure className="order-2 mx-auto w-full max-w-sm lg:order-1 lg:max-w-md">
+        <figure className="hero-profile-frame order-1 mx-auto w-full max-w-sm rounded-box lg:order-1 lg:max-w-md">
           <Image
             src="/img/profile-earth-remove-bg.jpg"
             alt="Portrait of Niti Surakongka"

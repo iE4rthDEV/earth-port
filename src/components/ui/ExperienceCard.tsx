@@ -14,7 +14,7 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
 
   return (
     <article className="card card-border border-base-300 bg-base-100 shadow-card">
-      <div className="card-body gap-4 p-6 sm:p-8 lg:grid lg:grid-cols-[18rem_minmax(0,1fr)] lg:gap-10">
+      <div className="card-body gap-4 p-6 sm:p-8 lg:grid lg:grid-cols-[24rem_minmax(0,1fr)] lg:gap-6">
         <div className="space-y-2">
           <p className="text-xs font-semibold tracking-wide text-base-content/60 uppercase">
             {experience.period}
@@ -37,12 +37,12 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
           <p className="font-thai text-base leading-7 text-base-content/80">
             {experience.description}
           </p>
-          <ul className="list-inside list-disc space-y-2 font-thai text-base leading-7 text-base-content/80">
+          <ul className="list-inside list-disc sm:pl-3 font-thai text-base leading-7 text-base-content/80">
             {experience.links.map((link) => (
               <li key={link.label}>
                 {link.href ? (
                   <Link
-                    className="link link-primary"
+                    className="link link-primary no-underline hover:no-underline"
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -60,14 +60,14 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
 
         <button
           type="button"
-          className="btn btn-ghost btn-block min-h-11 md:hidden"
+          className="btn btn-soft btn-primary btn-block min-h-11 md:hidden"
           aria-expanded={expanded}
           aria-controls={contentId}
           onClick={() => setExpanded((current) => !current)}
         >
           {expanded
-            ? `Hide details for ${experience.role}`
-            : `Show details for ${experience.role}`}
+            ? `Hide details`
+            : `Show details`}
         </button>
       </div>
     </article>

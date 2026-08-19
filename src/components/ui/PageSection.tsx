@@ -18,7 +18,7 @@ const spacingClasses: Record<SectionSpacing, string> = {
 };
 
 const containerClasses =
-  "mx-auto w-full max-w-(--container-page) px-4 sm:px-6 lg:px-8";
+  "mx-auto w-full max-w-(--container-page) px-4 sm:px-6";
 
 const PageSection: React.FC<PageSectionProps> = ({
   children,
