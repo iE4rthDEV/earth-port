@@ -19,7 +19,7 @@ const ProjectImageModal: React.FC<ProjectImageModalProps> = ({ src, alt }) => {
         type="button"
         data-project-image
         aria-label={`Enlarge ${alt} image`}
-        className="block w-full cursor-zoom-in rounded-box focus-visible:outline-offset-4 lg:aspect-[4/3] lg:overflow-hidden"
+        className="block w-full cursor-zoom-in rounded-box focus-visible:outline-offset-4 lg:aspect-4/3 lg:overflow-hidden"
         onClick={open}
       >
         <Image

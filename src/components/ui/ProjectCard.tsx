@@ -28,7 +28,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   if (variant === "list") {
     return (
       <article className="card card-border group relative overflow-hidden border-base-300 bg-base-100 shadow-card transition-[box-shadow,border-color] duration-normal hover:border-primary/40 hover:shadow-card-hover md:card-side">
-        <figure className="relative aspect-video w-full shrink-0 border-b border-base-300 md:aspect-[4/3] md:w-80 md:border-r md:border-b-0 xl:w-96">
+        <figure className="relative aspect-video w-full shrink-0 border-b border-base-300 md:aspect-4/3 md:w-80 md:border-r md:border-b-0 xl:w-96">
           <Image
             src={project.project_image}
             alt={project.project_name}
