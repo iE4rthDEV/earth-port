@@ -10,7 +10,7 @@ const Hero: React.FC = () => {
           <h1 className="text-gradient text-display font-display leading-tight font-black">
             Niti Surakongka
           </h1>
-          <p className="mx-auto max-w-(--container-measure) font-thai text-base leading-7 text-base-content/70 sm:text-lg sm:leading-8 lg:mx-0">
+          <p className="mx-auto max-w-measure font-thai text-base leading-7 text-base-content/70 sm:text-lg sm:leading-8 lg:mx-0">
             สวัสดีครับ! ผมชื่อเอิร์ธ หรือ นายนิติ สุระคงคา เป็น Junior Full
             Stack Developer ที่มีพื้นฐานในการพัฒนา Web Application
             ด้วยเทคโนโลยีสมัยใหม่
