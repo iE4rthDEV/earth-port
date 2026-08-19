@@ -8,14 +8,14 @@ const ProjectsPage = () => {
   const projects = getProjects();
 
   return (
-    <PageSection containerClassName="py-10">
+    <PageSection labelledBy="projects-heading">
       <div
         data-aos="fade-up"
         data-aos-duration="1000"
         data-aos-offset="100"
         className="mb-8 sm:mb-10"
       >
-        <SectionHeading title="All Projects" />
+        <SectionHeading id="projects-heading" as="h1" title="All Projects" />
       </div>
       <div className="flex flex-col gap-6 sm:gap-8">
         {projects.map((project, index) => (
@@ -26,7 +26,11 @@ const ProjectsPage = () => {
             data-aos-easing="ease-out"
             data-aos-delay={index * 2}
           >
-            <ProjectCard project={project} variant="list" />
+            <ProjectCard
+              project={project}
+              variant="list"
+              eagerImage={index === 0}
+            />
           </div>
         ))}
       </div>
