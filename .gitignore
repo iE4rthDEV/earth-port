@@ -31,6 +31,7 @@ yarn-error.log*
 
 # env files (can opt-in for commiting if needed)
 .env*
+*.local*
 
 # vercel
 .vercel
@@ -39,6 +40,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-
+# ai
 /.agents
 AGENTS.md
