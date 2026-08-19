@@ -46,8 +46,16 @@ const RootLayout = ({
       >
         <MantineProvider theme={mantineTheme}>
           <AosProvider>
+            <a
+              href="#main-content"
+              className="btn btn-primary fixed top-3 left-3 z-50 -translate-y-24 focus:translate-y-0"
+            >
+              Skip to main content
+            </a>
             <Navbar />
-            <main className="flex-1">{children}</main>
+            <main id="main-content" tabIndex={-1} className="flex-1">
+              {children}
+            </main>
             <Footer />
           </AosProvider>
           <SpeedInsights />
