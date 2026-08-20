@@ -1,13 +1,14 @@
-import { Pill } from "@mantine/core";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound, redirect } from "next/navigation";
+import { FiArrowLeft } from "react-icons/fi";
 import {
   getProjectById,
   getProjectBySlug,
   getProjects,
 } from "@/lib/projects";
-import ProjectImageModal from "@/components/ui/ProjectImageModal";
 import ProjectLinks from "@/components/ui/ProjectLinks";
+import TechBadge from "@/components/ui/TechBadge";
 import { formatResponsibilities } from "@/types/project";
 
 export const generateStaticParams = () => {
@@ -34,63 +35,88 @@ const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
 
   const project = projectBySlug;
   const responsibilitiesLabel = formatResponsibilities(
-    project.project_responsibilities
+    project.project_responsibilities,
   );
 
   return (
-    <div className="container mx-auto px-4 py-6 sm:px-6 sm:py-8">
-      <nav className="mb-10 font-Outfit text-sm text-text-muted">
-        <Link href="/projects" className="link-accent">
-          Projects
+    <div className="mx-auto w-full max-w-(--container-page) px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8">
+      <nav
+        aria-label="Back to projects"
+        className="mb-6 lg:mb-8"
+      >
+        <Link
+          href="/projects"
+          className="btn btn-ghost btn-sm gap-1.5 rounded-field px-3 font-display text-sm font-normal text-base-content/70 hover:bg-base-200 hover:text-primary"
+        >
+          <FiArrowLeft aria-hidden="true" className="size-4" /> Projects
         </Link>
-        <span className="mx-2">/</span>
-        <span className="text-stone-800">{project.project_name}</span>
       </nav>
-      <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
-        <div className="order-2 flex items-center justify-center px-0 lg:order-1">
-          <ProjectImageModal
+
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,9fr)_minmax(0,11fr)] lg:items-start lg:gap-x-10">
+        <div className="order-1 w-full lg:order-0 lg:col-start-1 lg:row-start-1 lg:max-w-md">
+          <Image
             src={project.project_image}
             alt={project.project_name}
+            width={1080}
+            height={1080}
+            loading="eager"
+            sizes="(max-width: 1023px) calc(100vw - 2rem), 32rem"
+            className="h-auto w-full rounded-box border border-base-300 object-contain object-top shadow-lg"
           />
         </div>
-        <div className="order-1 space-y-4 md:space-y-6 lg:order-2">
-          <div className="space-y-2 sm:space-y-3">
-            <h1 className="font-Outfit text-2xl font-medium capitalize md:text-4xl">
+
+        <div className="order-2 space-y-6 lg:order-0 lg:col-start-2 lg:row-start-1">
+          <div className="space-y-3">
+            <h1 className="text-project-title font-display font-semibold leading-tight capitalize">
               {project.project_name}
             </h1>
-            <div className="flex flex-wrap gap-1">
+            <div className="flex flex-wrap gap-2">
               {project.project_tag.map((tag) => (
-                <Pill key={tag}>
-                  {tag}
-                </Pill>
+                <TechBadge key={tag} tag={tag} size="sm" />
               ))}
             </div>
           </div>
-          <p className="font-Kanit text-base font-light leading-relaxed text-stone-600 md:text-lg">
-            {project.project_description}
-          </p>
-          <div>
-            <p className="font-Outfit text-lg font-medium">
-              {responsibilitiesLabel}
+
+          <div data-project-description>
+            <p className="font-thai text-base leading-7 text-base-content/75 sm:text-lg sm:leading-8">
+              {project.project_description}
             </p>
-            <ul className="list-inside list-disc indent-2 font-Kanit text-sm font-light sm:indent-3 sm:text-base">
+          </div>
+
+          <section
+            data-project-responsibilities
+            aria-labelledby="responsibilities-heading"
+          >
+            <h2
+              id="responsibilities-heading"
+              className="mb-2 font-display text-lg font-semibold"
+            >
+              {responsibilitiesLabel}
+            </h2>
+            <ul className="list-outside list-disc space-y-2 ps-5 font-thai text-base leading-7 text-base-content/80">
               {project.keyResponsibilities.map((keyResponsibility) => (
                 <li key={keyResponsibility}>{keyResponsibility}</li>
               ))}
             </ul>
-          </div>
-          <div>
-            <p className="font-Outfit text-lg font-semibold">
+          </section>
+
+          <section
+            data-project-technologies
+            aria-labelledby="technologies-used-heading"
+          >
+            <h2
+              id="technologies-used-heading"
+              className="mb-2 font-display text-lg font-semibold"
+            >
               Technologies Used
-            </p>
-            <ul className="list-inside list-disc indent-3 text-sm sm:indent-5 sm:text-base">
+            </h2>
+            <ul className="list-outside list-disc space-y-2 ps-5 font-thai text-base leading-7 text-base-content/80">
               {project.technologies_used.map((technology) => (
-                <li className="font-light " key={technology}>
-                  {technology}
-                </li>
+                <li key={technology}>{technology}</li>
               ))}
             </ul>
-          </div>
+          </section>
+
           <ProjectLinks
             liveUrl={project.live_url}
             githubUrl={project.github_url}

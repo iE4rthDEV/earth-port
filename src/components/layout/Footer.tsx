@@ -6,7 +6,6 @@ import {
   FaInstagram,
   FaLine,
   FaLinkedin,
-  FaMedium,
 } from "react-icons/fa";
 
 const socialLinks = [
@@ -35,64 +34,50 @@ const socialLinks = [
     label: "LinkedIn",
     icon: FaLinkedin,
   },
-  {
-    href: "https://medium.com/@niti2003s",
-    label: "Medium",
-    icon: FaMedium,
-  },
 ] as const;
 
 const quickLinks = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
-  { href: "/contact", label: "Contact" }
+  { href: "/contact", label: "Contact" },
 ] as const;
 
 const Footer: React.FC = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-auto border-t border-stone-200 bg-base100">
-      <div className="h-1 bg-brand-gradient" />
-      <div className="container mx-auto px-4 pt-10 pb-6 sm:px-6 sm:pt-0-12">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          <div className="space-y-2">
-            <p className="font-Outfit text-lg font-semibold text-gradient">
+    <footer className="mt-auto border-t border-base-300 bg-base-100">
+      <div className="h-1 bg-linear-to-r from-primary to-secondary" />
+      <div className="mx-auto w-full max-w-(--container-page) px-4 pt-10 pb-6 sm:px-6 sm:pt-12 lg:px-8">
+        <div className="footer footer-vertical gap-8 sm:footer-horizontal sm:grid-cols-2 lg:grid-cols-3">
+          <aside className="space-y-2">
+            <p className="text-gradient font-display text-lg font-semibold">
               Niti Surakongka
             </p>
-            <p className="font-Kanit text-sm font-light text-text-muted">
-              Junior Frontend Developer — portfolio & projects
+            <p className="font-thai text-sm font-normal text-base-content/70">
+              Junior Full Stack Developer — portfolio & projects
             </p>
-          </div>
-          <div>
-            <p className="mb-3 font-Outfit text-sm font-semibold uppercase tracking-wide text-stone-700">
+          </aside>
+
+          <nav aria-label="Footer navigation">
+            <h2 className="footer-title mb-1 text-base-content/80">
               Quick links
-            </p>
-            <ul className="space-y-2">
-              {quickLinks.map((link) => (
-                <li key={link.href}>
-                  {"external" in link && link.external ? (
-                    <a
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="link-accent text-sm"
-                    >
-                      {link.label}
-                    </a>
-                  ) : (
-                    <Link href={link.href} className="link-accent text-sm">
-                      {link.label}
-                    </Link>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <p className="mb-3 font-Outfit text-sm font-semibold uppercase tracking-wide text-stone-700">
+            </h2>
+            {quickLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="link link-hover content-center text-sm font-medium text-primary py-1"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+
+          <nav aria-label="Social links">
+            <h2 className="footer-title mb-1 text-base-content/80">
               Connect
-            </p>
+            </h2>
             <div className="flex flex-wrap gap-3">
               {socialLinks.map(({ href, label, icon: Icon }) => (
                 <a
@@ -101,15 +86,15 @@ const Footer: React.FC = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="text-primary transition hover:scale-110 hover:text-primary-end"
+                  className="btn btn-ghost btn-square text-primary transition-colors duration-fast hover:bg-primary/10"
                 >
-                  <Icon className="h-6 w-6" />
+                  <Icon className="size-6" />
                 </a>
               ))}
             </div>
-          </div>
+          </nav>
         </div>
-        <p className="mt-8 border-t border-stone-100 pt-6 text-center text-xs text-text-muted">
+        <p className="mt-8 border-t border-base-300 pt-6 text-center text-xs text-base-content/60">
           © {year} Niti Surakongka. All rights reserved.
         </p>
       </div>

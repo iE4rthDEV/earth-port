@@ -1,47 +1,60 @@
 import React from "react";
 import GradientText from "./GradientText";
 
+interface AosProps {
+  "data-aos"?: string;
+  "data-aos-delay"?: string;
+  "data-aos-duration"?: string;
+  "data-aos-easing"?: string;
+  "data-aos-offset"?: string;
+  "data-aos-anchor"?: string;
+}
+
 interface SectionHeadingProps {
   title: string;
   highlight?: string;
+  as?: "h1" | "h2";
+  id?: string;
   className?: string;
-  aosProps?: {
-    "data-aos"?: string;
-    "data-aos-delay"?: string;
-    "data-aos-duration"?: string;
-    "data-aos-easing"?: string;
-    "data-aos-offset"?: string;
-    "data-aos-anchor"?: string;
-  };
+  aosProps?: AosProps;
 }
+
+const headingClasses =
+  "text-balance text-center font-display text-section-title font-semibold leading-tight";
 
 const SectionHeading: React.FC<SectionHeadingProps> = ({
   title,
   highlight,
+  as = "h2",
+  id,
   className = "",
   aosProps,
 }) => {
+  const Heading = as;
+
   if (highlight) {
     return (
-      <h2
+      <Heading
         {...aosProps}
-        className={`font-Outfit text-4xl text-center font-medium ${className}`}
+        id={id}
+        className={`${headingClasses} ${className}`.trim()}
       >
         {title}{" "}
         <GradientText as="span" className="font-extrabold">
           {highlight}
         </GradientText>
-      </h2>
+      </Heading>
     );
   }
 
   return (
-    <h2
+    <Heading
       {...aosProps}
-      className={`font-Outfit text-3xl sm:text-5xl font-medium text-center ${className}`}
+      id={id}
+      className={`${headingClasses} ${className}`.trim()}
     >
       {title}
-    </h2>
+    </Heading>
   );
 };
 

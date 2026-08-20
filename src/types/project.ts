@@ -11,6 +11,7 @@ export interface Project {
   github_url: string | null;
   live_url: string | null;
   featured?: boolean;
+  starred?: boolean;
   summary?: string;
 }
 

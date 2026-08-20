@@ -6,24 +6,35 @@ interface TechBadgeProps {
   tag: string;
   size?: "sm" | "md";
   onGradient?: boolean;
+  aosDelay?: number;
+  aosAnchor?: string;
 }
 
 const TechBadge: React.FC<TechBadgeProps> = ({
   tag,
   size = "md",
   onGradient = false,
+  aosDelay,
+  aosAnchor,
 }) => {
   const iconSlug = getTechIconSlug(tag);
   const isSmall = size === "sm";
+  const isAnimated = aosDelay !== undefined;
 
   return (
-    <div
-      className={`flex justify-center items-center text-black space-x-2 border bg-white rounded-xl hover:scale-105 duration-300 ${
+    <span
+      data-aos={isAnimated ? "zoom-in-up" : undefined}
+      data-aos-anchor={isAnimated ? aosAnchor : undefined}
+      data-aos-anchor-placement={isAnimated ? "top-bottom" : undefined}
+      data-aos-delay={isAnimated ? aosDelay : undefined}
+      data-aos-duration={isAnimated ? 700 : undefined}
+      data-aos-easing={isAnimated ? "ease-out" : undefined}
+      className={`badge h-auto cursor-default justify-center gap-1.5 rounded-field border ${
         isSmall
-          ? "px-2 py-[4px]"
+          ? "border-base-300 bg-base-100 px-2.5 py-1 text-base-content"
           : onGradient
-            ? "border-white/80 px-3 py-[4px] shadow-[0_0_15px_rgba(255,255,255,0.3)] hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] sm:px-4 sm:py-[6px]"
-            : "px-3 py-[4px] sm:px-4 sm:py-[6px]"
+            ? "border-primary-content/40 bg-primary-content/95 px-3 py-1 text-base-content shadow-sm sm:px-4"
+            : "border-base-300 bg-base-100 px-3 py-1 text-base-content sm:px-4 sm:py-1.5"
       }`}
     >
       <Image
@@ -32,10 +43,10 @@ const TechBadge: React.FC<TechBadgeProps> = ({
         src={`https://cdn.simpleicons.org/${iconSlug}`}
         alt=""
         unoptimized
-        className={isSmall ? "w-4 lg:w-5" : "w-4 lg:w-6"}
+        className="size-4 shrink-0"
       />
-      <p>{tag}</p>
-    </div>
+      <span className="whitespace-nowrap">{tag}</span>
+    </span>
   );
 };
 

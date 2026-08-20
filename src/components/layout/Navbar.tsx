@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const navLinks = [
   { href: "/", label: "Home", external: false },
@@ -24,7 +24,7 @@ const NavLink: React.FC<{
   className?: string;
 }> = ({ href, label, external, pathname, onNavigate, className = "" }) => {
   const active = !external && isActive(pathname, href);
-  const linkClass = `sm:px-4 lg:animated-underline ${active ? "font-semibold animated-underline-active" : ""} ${className}`;
+  const linkClass = `btn btn-ghost text-sm border-0 min-h-10 justify-start px-4.5 text-base font-medium transition-colors duration-fast md:justify-center ${active ? "bg-primary/10 font-semibold text-primary" : "text-base-content/75 hover:bg-primary/10 hover:text-primary"} ${className}`.trim();
 
   if (external) {
     return (
@@ -34,6 +34,7 @@ const NavLink: React.FC<{
         rel="noopener noreferrer"
         className={linkClass}
         onClick={onNavigate}
+        aria-current={active ? "page" : undefined}
       >
         {label}
       </a>
@@ -41,7 +42,12 @@ const NavLink: React.FC<{
   }
 
   return (
-    <Link href={href} className={linkClass} onClick={onNavigate}>
+    <Link
+      href={href}
+      className={linkClass}
+      onClick={onNavigate}
+      aria-current={active ? "page" : undefined}
+    >
       {label}
     </Link>
   );
@@ -49,27 +55,112 @@ const NavLink: React.FC<{
 
 const Navbar: React.FC = () => {
   const pathname = usePathname();
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = (): void => {
+      setIsScrolled(window.scrollY > 24);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const restoreTriggerFocus = (): void => {
+    requestAnimationFrame(() => triggerRef.current?.focus());
+  };
+
+  const openMenu = (): void => dialogRef.current?.showModal();
+  const closeMenu = (): void => dialogRef.current?.close();
 
   return (
-    <>
-      <header className="navbar sticky top-0 z-50 bg-brand-gradient px-4 py-4 shadow-lg backdrop-blur-md">
-        <div className="container mx-auto flex w-full items-center justify-between">
-          <div className="navbar-start lg:hidden">
-          </div>
-          <div className="navbar-center">
-            <nav className="menu menu-horizontal p-0 text-base text-white space-x-2 lg:text-lg">
+    <header
+      className="navbar-shell sticky top-0 z-50 border-b border-base-300 bg-base-100"
+      data-scrolled={isScrolled}
+    >
+      <div className="navbar relative z-10 mx-auto max-w-(--container-page) px-4 sm:px-6 lg:px-8">
+        <div className="navbar-start">
+          <Link
+            href="/"
+            className="btn btn-ghost min-h-11 px-2 font-display text-lg font-semibold text-base-content"
+          >
+            Niti Surakongka
+          </Link>
+        </div>
+
+        <nav
+          aria-label="Primary navigation"
+          className="navbar-end hidden md:flex"
+        >
+          <ul className="menu menu-horizontal gap-1.5 p-0">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <NavLink pathname={pathname} {...link} />
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div className="navbar-end md:hidden">
+          <button
+            ref={triggerRef}
+            type="button"
+            className="btn btn-ghost btn-square min-h-11 min-w-11"
+            onClick={openMenu}
+            aria-label="Open navigation"
+          >
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              className="size-6"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path
+                strokeLinecap="round"
+                d="M4 7h16M4 12h16M4 17h16"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <dialog
+        ref={dialogRef}
+        aria-label="Mobile navigation"
+        className="modal modal-top md:hidden"
+        onClose={restoreTriggerFocus}
+      >
+        <div className="modal-box mt-20 rounded-box bg-base-100 p-4 shadow-xl">
+          <nav aria-label="Mobile navigation">
+            <ul className="menu w-full gap-1 p-0">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <NavLink pathname={pathname} {...link} />
+                  <NavLink
+                    pathname={pathname}
+                    {...link}
+                    onNavigate={closeMenu}
+                  />
                 </li>
               ))}
-            </nav>
-          </div>
-          <div className="navbar-end lg:hidden">
-          </div>
+            </ul>
+          </nav>
+          <form method="dialog" className="mt-3">
+            <button className="btn btn-ghost btn-block min-h-11">
+              Close navigation
+            </button>
+          </form>
         </div>
-      </header>
-    </>
+        <form method="dialog" className="modal-backdrop">
+          <button aria-label="Close navigation">close</button>
+        </form>
+      </dialog>
+    </header>
   );
 };
 

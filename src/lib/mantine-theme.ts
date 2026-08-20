@@ -2,6 +2,8 @@ import { createTheme } from "@mantine/core";
 
 export const mantineTheme = createTheme({
   primaryColor: "brand",
+  fontFamily:
+    'var(--font-noto-thai), var(--font-sarabun), -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif',
   colors: {
     brand: [
       "#eff6ff",
