@@ -16,8 +16,8 @@ interface ProjectCardProps {
 
 const GRID_VISIBLE_TAGS = 3;
 const GRID_MOBILE_VISIBLE_TAGS = 2;
-const EXTRA_TAG_COUNT_CLASS =
-  "shrink-0 whitespace-nowrap text-sm font-medium leading-5 text-base-content/60";
+const EXTRA_TAG_COUNT_BADGE_CLASS =
+  "badge h-auto shrink-0 cursor-default justify-center rounded-field border border-base-content/10 bg-base-100 px-2 py-0.5 font-display text-sm font-medium text-base-content";
 
 const getCardSummary = (project: Project): string => {
   if (project.summary) return project.summary;
@@ -66,9 +66,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           <h2 className="card-title text-card-title line-clamp-2 font-display font-semibold">
             {project.project_name}
           </h2>
-          <div className="flex flex-wrap items-center gap-1 font-display text-sm sm:gap-2">
+          <div className="flex flex-wrap items-center gap-1 font-display text-sm">
             {project.project_tag.map((tag) => (
-              <TechBadge key={tag} tag={tag} size="sm" />
+              <TechBadge key={tag} tag={tag} size="sm" compact />
             ))}
           </div>
           <p className="line-clamp-3 font-thai text-sm leading-6 text-base-content/70 sm:text-base sm:leading-7 lg:line-clamp-none">
@@ -117,7 +117,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         <h2 className="card-title text-card-title line-clamp-1 font-display font-semibold capitalize">
           {project.project_name}
         </h2>
-        <div className="flex min-w-0 justify-center font-display text-sm">
+        <div className="flex min-w-0 justify-start font-display text-sm">
           <div className="flex min-w-0 max-w-full items-center gap-1">
             <div className="flex min-w-0 flex-nowrap items-center gap-1 overflow-hidden">
               {gridTags.map((tag, index) => (
@@ -129,14 +129,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                       : "shrink-0"
                   }
                 >
-                  <TechBadge tag={tag} size="sm" />
+                  <TechBadge tag={tag} size="sm" compact />
                 </span>
               ))}
             </div>
             {extraMobileGridTagCount > 0 && (
               <span
                 aria-label={`อีก ${extraMobileGridTagCount} เทคโนโลยี`}
-                className={`${EXTRA_TAG_COUNT_CLASS} lg:hidden`}
+                className={`${EXTRA_TAG_COUNT_BADGE_CLASS} lg:hidden`}
               >
                 +{extraMobileGridTagCount}
               </span>
@@ -144,7 +144,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             {extraDesktopGridTagCount > 0 && (
               <span
                 aria-label={`อีก ${extraDesktopGridTagCount} เทคโนโลยี`}
-                className={`${EXTRA_TAG_COUNT_CLASS} hidden lg:inline`}
+                className={`${EXTRA_TAG_COUNT_BADGE_CLASS} hidden lg:inline-flex`}
               >
                 +{extraDesktopGridTagCount}
               </span>

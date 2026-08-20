@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { notFound, redirect } from "next/navigation";
-import { FiArrowLeft } from "react-icons/fi";
+import { FiChevronLeft } from "react-icons/fi";
 import {
   getProjectById,
   getProjectBySlug,
@@ -42,13 +42,13 @@ const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
     <div className="mx-auto w-full max-w-(--container-page) px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8">
       <nav
         aria-label="Back to projects"
-        className="mb-6 lg:mb-8"
+        className="mb-4 lg:mb-6"
       >
         <Link
           href="/projects"
-          className="btn btn-ghost btn-sm gap-1.5 rounded-field px-3 font-display text-sm font-normal text-base-content/70 hover:bg-base-200 hover:text-primary"
+          className="btn btn-soft btn-primary btn-sm -ml-2 gap-1.5 rounded-field px-2 font-display text-sm font-medium text-base-content/70 bg-transparent border-0 hover:text-primary"
         >
-          <FiArrowLeft aria-hidden="true" className="size-4" /> Projects
+          <FiChevronLeft aria-hidden="true" className="size-4" /> Projects
         </Link>
       </nav>
 
@@ -67,12 +67,12 @@ const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
 
         <div className="order-2 space-y-6 lg:order-0 lg:col-start-2 lg:row-start-1">
           <div className="space-y-3">
-            <h1 className="text-project-title font-display font-semibold leading-tight capitalize">
+            <h1 className="text-[length:calc(var(--text-project-title)-2px)] font-display font-semibold leading-tight capitalize">
               {project.project_name}
             </h1>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1">
               {project.project_tag.map((tag) => (
-                <TechBadge key={tag} tag={tag} size="sm" />
+                <TechBadge key={tag} tag={tag} size="sm" compact />
               ))}
             </div>
           </div>

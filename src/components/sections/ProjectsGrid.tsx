@@ -33,6 +33,7 @@ const ProjectsGrid = () => {
             key={project.project_id}
             project={project}
             variant="grid"
+            ctaVariant="soft"
             eagerImage={index === 0}
           />
         ))}
