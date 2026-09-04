@@ -1,48 +1,41 @@
 import type { Metadata } from "next";
-import { Noto_Sans_Thai, Outfit, Sarabun } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { MantineProvider } from "@mantine/core";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import AosProvider from "@/components/providers/AosProvider";
+import { getDictionary } from "@/i18n/dictionaries";
+import { createCanonicalAlternates, metadataBase } from "@/i18n/metadata";
+import { getRequestLocale } from "@/i18n/server";
 import { mantineTheme } from "@/lib/mantine-theme";
+import { fontVariables } from "./fonts";
 import "@mantine/core/styles.layer.css";
 import "./globals.css";
 
-const outfit = Outfit({
-  subsets: ["latin"],
-  variable: "--font-outfit",
-  display: "swap",
-});
+interface RootLayoutProps {
+  children: React.ReactNode;
+}
 
-const notoSansThai = Noto_Sans_Thai({
-  subsets: ["latin", "thai"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-noto-thai",
-  display: "swap",
-});
+export const generateMetadata = async (): Promise<Metadata> => {
+  const locale = await getRequestLocale();
+  const dictionary = await getDictionary(locale);
 
-const sarabun = Sarabun({
-  subsets: ["latin", "thai"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-sarabun",
-  display: "swap",
-});
-
-export const metadata: Metadata = {
-  title: "Niti Surakongka | Portfolio",
-  description: "Niti Surakongka's portfolio",
+  return {
+    metadataBase,
+    title: dictionary.metadata.homeTitle,
+    description: dictionary.metadata.homeDescription,
+    alternates: createCanonicalAlternates(),
+  };
 };
 
-const RootLayout = ({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) => {
+const RootLayout = async ({ children }: RootLayoutProps) => {
+  const locale = await getRequestLocale();
+  const dictionary = await getDictionary(locale);
+
   return (
-    <html lang="th" data-theme="earthport" data-scroll-behavior="smooth">
+    <html lang={locale} data-theme="earthport" data-scroll-behavior="smooth">
       <body
-        className={`${outfit.variable} ${notoSansThai.variable} ${sarabun.variable} flex min-h-screen flex-col font-thai`}
+        className={`${fontVariables} flex min-h-screen flex-col font-thai`}
       >
         <MantineProvider theme={mantineTheme}>
           <AosProvider>
@@ -50,13 +43,25 @@ const RootLayout = ({
               href="#main-content"
               className="btn btn-primary fixed top-3 left-3 z-50 -translate-y-24 focus:translate-y-0"
             >
-              Skip to main content
+              {dictionary.navigation.skipToContent}
             </a>
-            <Navbar />
+            <Navbar
+              locale={locale}
+              copy={{
+                navigation: dictionary.navigation,
+                language: dictionary.language,
+              }}
+            />
             <main id="main-content" tabIndex={-1} className="flex-1">
               {children}
             </main>
-            <Footer />
+            <Footer
+              copy={{
+                navigation: dictionary.navigation,
+                footer: dictionary.footer,
+                common: dictionary.common,
+              }}
+            />
           </AosProvider>
           <SpeedInsights />
         </MantineProvider>

@@ -7,6 +7,7 @@ import {
   FaLine,
   FaLinkedin,
 } from "react-icons/fa";
+import type { Dictionary } from "@/i18n/dictionaries/th";
 
 const socialLinks = [
   {
@@ -21,7 +22,7 @@ const socialLinks = [
   },
   {
     href: "https://line.me/ti/p/8XgcLYn8Cg",
-    label: "Line",
+    label: "LINE",
     icon: FaLine,
   },
   {
@@ -36,14 +37,23 @@ const socialLinks = [
   },
 ] as const;
 
-const quickLinks = [
-  { href: "/", label: "Home" },
-  { href: "/projects", label: "Projects" },
-  { href: "/contact", label: "Contact" },
-] as const;
+interface FooterProps {
+  copy: Pick<Dictionary, "navigation" | "footer" | "common">;
+}
 
-const Footer: React.FC = () => {
+const Footer: React.FC<FooterProps> = ({ copy }) => {
   const year = new Date().getFullYear();
+  const quickLinks = [
+    { href: "/", label: copy.navigation.home },
+    {
+      href: "/projects",
+      label: copy.navigation.projects,
+    },
+    {
+      href: "/contact",
+      label: copy.navigation.contact,
+    },
+  ];
 
   return (
     <footer className="mt-auto border-t border-base-300 bg-base-100">
@@ -55,28 +65,28 @@ const Footer: React.FC = () => {
               Niti Surakongka
             </p>
             <p className="font-thai text-sm font-normal text-base-content/70">
-              Junior Full Stack Developer — portfolio & projects
+              {copy.footer.description}
             </p>
           </aside>
 
-          <nav aria-label="Footer navigation">
+          <nav aria-label={copy.footer.navigationLabel}>
             <h2 className="footer-title mb-1 text-base-content/80">
-              Quick links
+              {copy.footer.quickLinks}
             </h2>
             {quickLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="link link-hover content-center text-sm font-medium text-primary py-1"
+                className="link link-hover content-center py-1 text-sm font-medium text-primary"
               >
                 {link.label}
               </Link>
             ))}
           </nav>
 
-          <nav aria-label="Social links">
+          <nav aria-label={copy.footer.socialLabel}>
             <h2 className="footer-title mb-1 text-base-content/80">
-              Connect
+              {copy.footer.connect}
             </h2>
             <div className="flex flex-wrap gap-3">
               {socialLinks.map(({ href, label, icon: Icon }) => (
@@ -85,17 +95,19 @@ const Footer: React.FC = () => {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={label}
+                  aria-label={`${label} (${copy.common.opensNewTab})`}
                   className="btn btn-ghost btn-square text-primary transition-colors duration-fast hover:bg-primary/10"
                 >
-                  <Icon className="size-6" />
+                  <Icon aria-hidden="true" className="size-6" />
                 </a>
               ))}
             </div>
           </nav>
         </div>
-        <p className="mt-8 border-t border-base-300 pt-6 text-center text-xs text-base-content/60">
-          © {year} Niti Surakongka. All rights reserved.
+      </div>
+      <div className="border-t border-base-300">
+        <p className="mx-auto w-full max-w-(--container-page) px-4 pt-6 pb-6 text-center text-xs text-base-content/60 sm:px-6 lg:px-8">
+          © {year} Niti Surakongka. {copy.footer.rights}
         </p>
       </div>
     </footer>

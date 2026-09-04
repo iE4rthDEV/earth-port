@@ -5,6 +5,11 @@ import Button from "./Button";
 interface ProjectLinksProps {
   liveUrl: string | null;
   githubUrl: string | null;
+  copy: {
+    livePreview: string;
+    githubRepository: string;
+    opensNewTab: string;
+  };
 }
 
 const LiveIcon = () => (
@@ -46,7 +51,11 @@ const GithubIcon = () => (
   </svg>
 );
 
-const ProjectLinks: React.FC<ProjectLinksProps> = ({ liveUrl, githubUrl }) => {
+const ProjectLinks: React.FC<ProjectLinksProps> = ({
+  liveUrl,
+  githubUrl,
+  copy,
+}) => {
   const showLive = hasLiveUrl(liveUrl);
   const showGithub = githubUrl !== null;
 
@@ -63,9 +72,8 @@ const ProjectLinks: React.FC<ProjectLinksProps> = ({ liveUrl, githubUrl }) => {
           className="w-full sm:w-auto"
         >
           <LiveIcon />
-          <span className="sr-only">Open </span>
-          <span>live preview</span>
-          <span className="sr-only"> (opens in a new tab)</span>
+          <span>{copy.livePreview}</span>
+          <span className="sr-only"> ({copy.opensNewTab})</span>
         </Button>
       )}
       {showGithub && githubUrl && (
@@ -77,9 +85,8 @@ const ProjectLinks: React.FC<ProjectLinksProps> = ({ liveUrl, githubUrl }) => {
           className="w-full sm:w-auto"
         >
           <GithubIcon />
-          <span className="sr-only">Open </span>
-          <span>GitHub repository</span>
-          <span className="sr-only"> (opens in a new tab)</span>
+          <span>{copy.githubRepository}</span>
+          <span className="sr-only"> ({copy.opensNewTab})</span>
         </Button>
       )}
     </div>

@@ -6,9 +6,14 @@ import type { Experience } from "@/types/experience";
 
 interface ExperienceCardProps {
   experience: Experience;
+  copy: {
+    showDetails: string;
+    hideDetails: string;
+    opensNewTab: string;
+  };
 }
 
-const ExperienceCard = ({ experience }: ExperienceCardProps) => {
+const ExperienceCard = ({ experience, copy }: ExperienceCardProps) => {
   const [expanded, setExpanded] = useState(false);
   const contentId = useId();
 
@@ -39,7 +44,7 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
           </p>
           <ul className="list-inside list-disc sm:pl-3 font-thai text-base leading-7 text-base-content/80">
             {experience.links.map((link) => (
-              <li key={link.label}>
+              <li key={link.id}>
                 {link.href ? (
                   <Link
                     className="link link-primary no-underline hover:no-underline"
@@ -48,7 +53,7 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
                     rel="noopener noreferrer"
                   >
                     {link.label}
-                    <span className="sr-only"> (opens in a new tab)</span>
+                    <span className="sr-only"> ({copy.opensNewTab})</span>
                   </Link>
                 ) : (
                   link.label
@@ -65,9 +70,7 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
           aria-controls={contentId}
           onClick={() => setExpanded((current) => !current)}
         >
-          {expanded
-            ? `Hide details`
-            : `Show details`}
+          {expanded ? copy.hideDetails : copy.showDetails}
         </button>
       </div>
     </article>

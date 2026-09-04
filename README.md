@@ -48,7 +48,11 @@ src/
 
 ## Content
 
-Project and tech-stack data lives in [`src/data/project.json`](src/data/project.json) and [`src/data/tech-stack.ts`](src/data/tech-stack.ts) — update these files to add or edit portfolio entries without touching component code.
+Project data and bilingual copy live in [`src/data/projects.ts`](src/data/projects.ts) and [`src/data/project-copy.ts`](src/data/project-copy.ts). Technology data lives in [`src/data/tech-stack.ts`](src/data/tech-stack.ts).
+
+## Environment
+
+Copy `.env.example` to `.env.local` for local overrides. Set `SITE_URL` to the public origin when deploying outside Vercel so canonical URLs and the sitemap never point to localhost. Vercel deployments use `VERCEL_PROJECT_PRODUCTION_URL` automatically.
 
 ## Contact
 

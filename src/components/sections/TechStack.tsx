@@ -2,7 +2,11 @@ import React from "react";
 import { TECH_STACK_TAGS } from "@/data/tech-stack";
 import TechBadge from "@/components/ui/TechBadge";
 
-const TechStack: React.FC = () => {
+interface TechStackProps {
+  heading: string;
+}
+
+const TechStack: React.FC<TechStackProps> = ({ heading }) => {
   return (
     <section
       aria-labelledby="technology-heading"
@@ -16,7 +20,7 @@ const TechStack: React.FC = () => {
           data-aos-easing="ease-out"
           className="text-section-title text-balance text-center font-display font-semibold text-primary-content"
         >
-          Technologies I use
+          {heading}
         </h2>
         <div
           className="mt-5 flex max-w-5xl flex-wrap items-center justify-center gap-1.5 font-display text-sm sm:mt-6 sm:gap-2 sm:text-base sm:font-medium"
