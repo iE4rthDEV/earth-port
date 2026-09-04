@@ -33,10 +33,13 @@ const RootLayout = async ({ children }: RootLayoutProps) => {
   const dictionary = await getDictionary(locale);
 
   return (
-    <html lang={locale} data-theme="earthport" data-scroll-behavior="smooth">
-      <body
-        className={`${fontVariables} flex min-h-screen flex-col font-thai`}
-      >
+    <html
+      className={fontVariables}
+      lang={locale}
+      data-theme="earthport"
+      data-scroll-behavior="smooth"
+    >
+      <body className="flex min-h-screen flex-col font-thai">
         <MantineProvider theme={mantineTheme}>
           <AosProvider>
             <a
