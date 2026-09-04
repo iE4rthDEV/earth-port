@@ -60,7 +60,8 @@
 }
 
 @theme inline {
-  --font-display: var(--font-outfit), sans-serif;
+  --font-display: var(--font-outfit), var(--font-noto-thai), var(--font-sarabun),
+    sans-serif;
   --font-thai: var(--font-noto-thai), var(--font-sarabun), -apple-system,
     BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
 }
