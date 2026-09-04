@@ -4,10 +4,12 @@ import React from "react";
 import { FaStar } from "react-icons/fa";
 import { getProjectPath } from "@/lib/projects";
 import type { Project } from "@/types/project";
+import type { Dictionary } from "@/i18n/dictionaries/th";
 import TechBadge from "./TechBadge";
 
 interface ProjectCardProps {
   project: Project;
+  copy: Dictionary["projects"];
   variant?: "grid" | "list";
   linkMode?: "button" | "card";
   ctaVariant?: "primary" | "soft";
@@ -19,29 +21,25 @@ const GRID_MOBILE_VISIBLE_TAGS = 2;
 const EXTRA_TAG_COUNT_BADGE_CLASS =
   "badge h-auto shrink-0 cursor-default justify-center rounded-field border border-base-content/10 bg-base-100 px-2 py-0.5 font-display text-sm font-medium text-base-content";
 
-const getCardSummary = (project: Project): string => {
-  if (project.summary) return project.summary;
-  return project.keyResponsibilities.join(", ");
-};
-
 const ProjectCard: React.FC<ProjectCardProps> = ({
   project,
+  copy,
   variant = "grid",
   linkMode = "button",
   ctaVariant = "primary",
   eagerImage = false,
 }) => {
-  const summary = getCardSummary(project);
+  const summary = project.summary;
   const detailHref = getProjectPath(project);
   const ctaClassName =
     ctaVariant === "soft" ? "btn btn-soft btn-primary" : "btn btn-primary";
-  const gridTags = project.project_tag.slice(0, GRID_VISIBLE_TAGS);
+  const gridTags = project.projectTags.slice(0, GRID_VISIBLE_TAGS);
   const extraMobileGridTagCount = Math.max(
-    project.project_tag.length - GRID_MOBILE_VISIBLE_TAGS,
+    project.projectTags.length - GRID_MOBILE_VISIBLE_TAGS,
     0,
   );
   const extraDesktopGridTagCount = Math.max(
-    project.project_tag.length - GRID_VISIBLE_TAGS,
+    project.projectTags.length - GRID_VISIBLE_TAGS,
     0,
   );
 
@@ -50,8 +48,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       <article className="card card-border group relative overflow-hidden border-base-300 bg-base-100 shadow-card-brand transition-[box-shadow,border-color] duration-normal hover:border-primary/40 hover:shadow-card-brand-hover md:card-side">
         <figure className="relative aspect-video w-full shrink-0 border-b border-base-300 md:aspect-4/3 md:w-80 md:border-r md:border-b-0 xl:w-96">
           <Image
-            src={project.project_image}
-            alt={project.project_name}
+            src={project.projectImage}
+            alt={`${copy.projectImageAlt}: ${project.projectName}`}
             width={450}
             height={450}
             loading={eagerImage ? "eager" : "lazy"}
@@ -64,10 +62,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         </figure>
         <div className="card-body min-w-0 p-5 sm:p-6">
           <h2 className="card-title text-card-title line-clamp-2 font-display font-semibold">
-            {project.project_name}
+            {project.projectName}
           </h2>
           <div className="flex flex-wrap items-center gap-1 font-display text-sm">
-            {project.project_tag.map((tag) => (
+            {project.projectTags.map((tag) => (
               <TechBadge key={tag} tag={tag} size="sm" compact />
             ))}
           </div>
@@ -77,11 +75,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           <div className="mt-2">
             {linkMode === "card" ? (
               <span className={`${ctaClassName} pointer-events-none min-h-11 px-6`}>
-                View project
+                {copy.viewProject}
               </span>
             ) : (
               <Link href={detailHref} className={`${ctaClassName} min-h-11 px-6`}>
-                View project
+                {copy.viewProject}
               </Link>
             )}
           </div>
@@ -89,7 +87,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         {linkMode === "card" && (
           <Link
             href={detailHref}
-            aria-label={`View project: ${project.project_name}`}
+            aria-label={`${copy.viewProject}: ${project.projectName}`}
             className="absolute inset-0 rounded-box focus-visible:outline-2 focus-visible:outline-primary"
           />
         )}
@@ -103,8 +101,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         <Image
           width={450}
           height={450}
-          src={project.project_image}
-          alt={project.project_name}
+          src={project.projectImage}
+          alt={`${copy.projectImageAlt}: ${project.projectName}`}
           className="h-full w-full object-cover object-top"
           loading={eagerImage ? "eager" : "lazy"}
           sizes="(max-width: 639px) calc(100vw - 2rem), (max-width: 1023px) calc(50vw - 2.25rem), 25rem"
@@ -115,7 +113,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       </figure>
       <div className="card-body p-5 lg:py-6">
         <h2 className="card-title text-card-title line-clamp-1 font-display font-semibold capitalize">
-          {project.project_name}
+          {project.projectName}
         </h2>
         <div className="flex min-w-0 justify-start font-display text-sm">
           <div className="flex min-w-0 max-w-full items-center gap-1">
@@ -135,7 +133,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             </div>
             {extraMobileGridTagCount > 0 && (
               <span
-                aria-label={`อีก ${extraMobileGridTagCount} เทคโนโลยี`}
+                aria-label={`${extraMobileGridTagCount} ${copy.moreTechnologies}`}
                 className={`${EXTRA_TAG_COUNT_BADGE_CLASS} lg:hidden`}
               >
                 +{extraMobileGridTagCount}
@@ -143,7 +141,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             )}
             {extraDesktopGridTagCount > 0 && (
               <span
-                aria-label={`อีก ${extraDesktopGridTagCount} เทคโนโลยี`}
+                aria-label={`${extraDesktopGridTagCount} ${copy.moreTechnologies}`}
                 className={`${EXTRA_TAG_COUNT_BADGE_CLASS} hidden lg:inline-flex`}
               >
                 +{extraDesktopGridTagCount}
@@ -156,7 +154,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         </p>
         <div className="mt-2">
           <Link href={detailHref} className={`${ctaClassName} btn-block`}>
-            View project
+            {copy.viewProject}
           </Link>
         </div>
       </div>

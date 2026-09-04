@@ -1,62 +1,60 @@
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { FiChevronLeft } from "react-icons/fi";
+import ProjectLinks from "@/components/ui/ProjectLinks";
+import TechBadge from "@/components/ui/TechBadge";
+import { PROJECTS } from "@/data/projects";
+import { getDictionary } from "@/i18n/dictionaries";
+import { getRequestLocale } from "@/i18n/server";
 import {
   getProjectById,
   getProjectBySlug,
-  getProjects,
+  getProjectPath,
 } from "@/lib/projects";
-import ProjectLinks from "@/components/ui/ProjectLinks";
-import TechBadge from "@/components/ui/TechBadge";
 import { formatResponsibilities } from "@/types/project";
-
-export const generateStaticParams = () => {
-  return getProjects().map((project) => ({
-    slug: project.slug,
-  }));
-};
 
 interface ProjectDetailPageProps {
   params: Promise<{ slug: string }>;
 }
 
+export const generateStaticParams = () =>
+  PROJECTS.map((project) => ({ slug: project.slug }));
+
 const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
   const { slug } = await params;
-  const projectBySlug = getProjectBySlug(slug);
+  const locale = await getRequestLocale();
+  const dictionary = await getDictionary(locale);
+  const projectBySlug = getProjectBySlug(slug, locale);
 
   if (!projectBySlug) {
-    const projectById = getProjectById(slug);
-    if (projectById) {
-      redirect(`/projects/${projectById.slug}`);
-    }
+    const projectById = getProjectById(slug, locale);
+    if (projectById) redirect(getProjectPath(projectById));
     notFound();
   }
 
   const project = projectBySlug;
   const responsibilitiesLabel = formatResponsibilities(
-    project.project_responsibilities,
+    project.projectRoles,
   );
 
   return (
     <div className="mx-auto w-full max-w-(--container-page) px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8">
-      <nav
-        aria-label="Back to projects"
-        className="mb-4 lg:mb-6"
-      >
+      <nav aria-label={dictionary.projectDetail.backLabel} className="mb-4 lg:mb-6">
         <Link
           href="/projects"
-          className="btn btn-soft btn-primary btn-sm -ml-2 gap-1.5 rounded-field px-2 font-display text-sm font-medium text-base-content/70 bg-transparent border-0 hover:text-primary"
+          className="btn btn-soft btn-primary btn-sm -ml-2 gap-1.5 rounded-field border-0 bg-transparent px-2 font-display text-sm font-medium text-base-content/70 hover:text-primary"
         >
-          <FiChevronLeft aria-hidden="true" className="size-4" /> Projects
+          <FiChevronLeft aria-hidden="true" className="size-4" />
+          {dictionary.projectDetail.backToProjects}
         </Link>
       </nav>
 
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,9fr)_minmax(0,11fr)] lg:items-start lg:gap-x-10">
         <div className="order-1 w-full lg:order-0 lg:col-start-1 lg:row-start-1 lg:max-w-md">
           <Image
-            src={project.project_image}
-            alt={project.project_name}
+            src={project.projectImage}
+            alt={`${dictionary.projectDetail.projectImageAlt}: ${project.projectName}`}
             width={1080}
             height={1080}
             loading="eager"
@@ -67,11 +65,11 @@ const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
 
         <div className="order-2 space-y-6 lg:order-0 lg:col-start-2 lg:row-start-1">
           <div className="space-y-3">
-            <h1 className="text-[length:calc(var(--text-project-title)-2px)] font-display font-semibold leading-tight capitalize">
-              {project.project_name}
+            <h1 className="text-[calc(var(--text-project-title)-2px)] font-display font-semibold leading-tight capitalize">
+              {project.projectName}
             </h1>
             <div className="flex flex-wrap gap-1">
-              {project.project_tag.map((tag) => (
+              {project.projectTags.map((tag) => (
                 <TechBadge key={tag} tag={tag} size="sm" compact />
               ))}
             </div>
@@ -79,7 +77,7 @@ const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
 
           <div data-project-description>
             <p className="font-thai text-base leading-7 text-base-content/75 sm:text-lg sm:leading-8">
-              {project.project_description}
+              {project.projectDescription}
             </p>
           </div>
 
@@ -94,8 +92,8 @@ const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
               {responsibilitiesLabel}
             </h2>
             <ul className="list-outside list-disc space-y-2 ps-5 font-thai text-base leading-7 text-base-content/80">
-              {project.keyResponsibilities.map((keyResponsibility) => (
-                <li key={keyResponsibility}>{keyResponsibility}</li>
+              {project.keyResponsibilities.map((responsibility) => (
+                <li key={responsibility}>{responsibility}</li>
               ))}
             </ul>
           </section>
@@ -108,18 +106,19 @@ const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
               id="technologies-used-heading"
               className="mb-2 font-display text-lg font-semibold"
             >
-              Technologies Used
+              {dictionary.projectDetail.technologiesUsed}
             </h2>
             <ul className="list-outside list-disc space-y-2 ps-5 font-thai text-base leading-7 text-base-content/80">
-              {project.technologies_used.map((technology) => (
+              {project.technologiesUsed.map((technology) => (
                 <li key={technology}>{technology}</li>
               ))}
             </ul>
           </section>
 
           <ProjectLinks
-            liveUrl={project.live_url}
-            githubUrl={project.github_url}
+            liveUrl={project.liveUrl}
+            githubUrl={project.githubUrl}
+            copy={dictionary.projectDetail}
           />
         </div>
       </div>

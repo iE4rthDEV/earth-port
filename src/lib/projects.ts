@@ -1,18 +1,28 @@
-import projectsData from "@/data/project.json";
+import { PROJECT_COPY } from "@/data/project-copy";
+import { PROJECTS } from "@/data/projects";
+import type { Locale } from "@/i18n/config";
 import type { Project } from "@/types/project";
 
-const projects = projectsData as Project[];
+export const getProjects = (locale: Locale): readonly Project[] =>
+  PROJECTS.map((project) => ({
+    ...project,
+    ...PROJECT_COPY[locale][project.projectId],
+  }));
 
-export const getProjects = (): Project[] => projects;
+export const getProjectById = (
+  id: string,
+  locale: Locale,
+): Project | undefined =>
+  getProjects(locale).find((project) => project.projectId === id);
 
-export const getProjectById = (id: string): Project | undefined =>
-  projects.find((p) => p.project_id === id);
-
-export const getProjectBySlug = (slug: string): Project | undefined =>
-  projects.find((p) => p.slug === slug);
+export const getProjectBySlug = (
+  slug: string,
+  locale: Locale,
+): Project | undefined =>
+  getProjects(locale).find((project) => project.slug === slug);
 
 export const getProjectPath = (project: Project): string =>
   `/projects/${project.slug}`;
 
-export const getFeaturedProjects = (): Project[] =>
-  projects.filter((p) => p.featured === true);
+export const getFeaturedProjects = (locale: Locale): readonly Project[] =>
+  getProjects(locale).filter((project) => project.featured === true);

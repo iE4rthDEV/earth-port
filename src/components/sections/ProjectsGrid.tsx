@@ -3,16 +3,30 @@ import { getFeaturedProjects } from "@/lib/projects";
 import PageSection from "@/components/ui/PageSection";
 import ProjectCard from "@/components/ui/ProjectCard";
 import SectionHeading from "@/components/ui/SectionHeading";
+import type { Locale } from "@/i18n/config";
+import type { Dictionary } from "@/i18n/dictionaries/th";
 
-const ProjectsGrid = () => {
-  const projects = getFeaturedProjects();
+interface ProjectsGridProps {
+  locale: Locale;
+  heading: string;
+  highlight: string;
+  cardCopy: Dictionary["projects"];
+}
+
+const ProjectsGrid = ({
+  locale,
+  heading,
+  highlight,
+  cardCopy,
+}: ProjectsGridProps) => {
+  const projects = getFeaturedProjects(locale);
 
   return (
     <PageSection id="featured-projects" labelledBy="featured-projects-heading">
       <div className="mb-8 sm:mb-10">
         <SectionHeading
-          title="Curated"
-          highlight="Works"
+          title={heading}
+          highlight={highlight}
           id="featured-projects-heading"
           aosProps={{
             "data-aos": "fade-down",
@@ -30,8 +44,9 @@ const ProjectsGrid = () => {
       >
         {projects.map((project, index) => (
           <ProjectCard
-            key={project.project_id}
+            key={project.projectId}
             project={project}
+            copy={cardCopy}
             variant="grid"
             ctaVariant="soft"
             eagerImage={index === 0}
