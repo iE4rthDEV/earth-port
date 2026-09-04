@@ -20,8 +20,8 @@ const GlobalNotFound = async () => {
   const dictionary = await getDictionary(locale);
 
   return (
-    <html lang={locale} data-theme="earthport">
-      <body className={`${fontVariables} bg-base-100 font-thai text-base-content`}>
+    <html className={fontVariables} lang={locale} data-theme="earthport">
+      <body className="bg-base-100 font-thai text-base-content">
         <NotFoundContent
           title={dictionary.errors.notFoundTitle}
           description={dictionary.errors.notFoundDescription}
