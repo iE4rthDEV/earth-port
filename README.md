@@ -20,11 +20,13 @@ Personal portfolio website of **Niti Surakongka (Earth)**, a Junior Full Stack D
 
 - **Hero section** — animated introduction with typewriter effect
 - **Experience timeline** — work history at CHAZ Insurance Brokers and EventTech.ai
-- **Curated projects grid** — featured projects pulled from a structured JSON dataset
+- **Curated projects grid** — featured projects pulled from typed portfolio data
 - **All projects page** — full list view with tech badges and live/GitHub links
-- **Project detail pages** — dynamic routes (`/projects/[slug]`) with an image preview modal
+- **Project detail pages** — clean dynamic routes (`/projects/[slug]`) with an image preview modal
 - **Tech stack showcase** — visual grid of tools and languages used
 - **Contact page** — quick links to Facebook, Line, phone, GitHub, and LinkedIn
+- **Bilingual interface** — switch between Thai and English with locale-neutral URLs
+- **Locale behavior** — stores the selected language in `earthport-locale`; legacy `/th` and `/en` paths redirect to clean routes
 - Fully responsive interface with AOS scroll animations and optimized Thai/English typography using Noto Sans Thai, Sarabun, and Outfit
 
 ## Project Structure
@@ -32,8 +34,10 @@ Personal portfolio website of **Niti Surakongka (Earth)**, a Junior Full Stack D
 ```
 src/
 ├── app/                    # Next.js App Router pages
-│   ├── contact/            # Contact page
-│   ├── projects/           # Projects list + [slug] detail pages
+│   ├── api/locale/          # Locale preference endpoint
+│   ├── contact/             # Contact page
+│   ├── projects/            # Projects list + [slug] detail pages
+│   ├── sitemap.ts           # Sitemap metadata route
 │   ├── layout.tsx          # Root layout (fonts, providers, navbar/footer)
 │   └── page.tsx            # Home page
 ├── components/
@@ -41,14 +45,16 @@ src/
 │   ├── providers/            # AOS provider
 │   ├── sections/              # Hero, MyExperiences, ProjectsGrid, TechStack
 │   └── ui/                    # Reusable UI: Button, ProjectCard, TechBadge, etc.
-├── data/                   # project.json, tech-stack.ts (content source of truth)
-├── lib/                    # projects.ts, tech-icons.ts, mantine-theme.ts
+├── data/                   # Canonical portfolio data and localized content
+├── i18n/                   # Locale config, dictionaries, and metadata helpers
+├── lib/                    # Data accessors, tech icons, and theme utilities
+├── proxy.ts                # Locale resolution and legacy route redirects
 └── types/                  # Shared TypeScript types (Project, etc.)
 ```
 
 ## Content
 
-Project data and bilingual copy live in [`src/data/projects.ts`](src/data/projects.ts) and [`src/data/project-copy.ts`](src/data/project-copy.ts). Technology data lives in [`src/data/tech-stack.ts`](src/data/tech-stack.ts).
+Canonical project and experience data live in [`src/data/projects.ts`](src/data/projects.ts) and [`src/data/experiences.ts`](src/data/experiences.ts). Localized project and experience copy lives in [`src/data/project-copy.ts`](src/data/project-copy.ts) and [`src/data/experience-copy.ts`](src/data/experience-copy.ts). Translation dictionaries live in [`src/i18n/dictionaries`](src/i18n/dictionaries).
 
 ## Environment
 
